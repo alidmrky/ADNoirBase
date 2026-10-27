@@ -1,0 +1,380 @@
+src/Modules/Identity/Identity.Application/Services/User/UserManagementService.cs
+  s_7fc58453d342bf::t_20a380d91028bd 51
+  s_7fc58453d342bf::t_f8bde4c7a33192 63-64,68
+  s_7fc58453d342bf::t_24de2d8ef073e5 81
+src/Modules/Notification/Notification.Application/Delivery/IInAppNotificationPublisher.cs
+  s_7fc58453d342bf::t_55559258770c85 1-10
+src/Modules/Notification/Notification.Application/Dispatching/NotificationRequest.cs
+  s_7fc58453d342bf::t_c553b33c8b73cb 1-56
+src/Modules/Notification/Notification.Domain/Interfaces/Repositories/INotificationTemplateRepository.cs
+  s_7fc58453d342bf::t_ebfc40a25c6c88 2-3,5-10,23-26
+  s_7fc58453d342bf::t_5086ec9d5a1d48 1,4,11-22
+src/Modules/Identity/Identity.Infrastructure/DependencyInjection.cs
+  s_7fc58453d342bf::t_f09b85e0fe95db 28-29
+  s_7fc58453d342bf::t_0d36bdf942bd47 1,4
+src/Modules/Notification/Notification.Application/Dispatching/NotificationDispatcher.cs
+  s_7fc58453d342bf::t_37e283b33ac44b 1-181,183-279
+  s_7fc58453d342bf::t_623a6baa2765cc 182
+src/Shared/ADNoirBase.Shared.Infrastructure/DependencyInjection.cs
+  s_7fc58453d342bf::t_0f088e9b4e94ab 2,5
+  s_7fc58453d342bf::t_721fddcfe6662b 69-71
+  s_7fc58453d342bf::t_85188920b1cff3 29
+  s_7fc58453d342bf::t_34b19dad304aaf 63
+src/Modules/Notification/Notification.Application/Delivery/InAppNotificationPayload.cs
+  s_7fc58453d342bf::t_fe092fb4c3778b 1-10
+src/Modules/Notification/Notification.Application/Dtos/Preferences/NotificationPreferenceDto.cs
+  s_7fc58453d342bf::t_014865d098f7c9 1-7
+src/Modules/Notification/Notification.Domain/Interfaces/Repositories/INotificationMessageRepository.cs
+  s_7fc58453d342bf::t_070fae39446cd5 2-3,5-23,40
+  s_7fc58453d342bf::t_bff9eb9d709406 1,4
+  s_7fc58453d342bf::t_8da09d23e5da3b 24-39
+src/Modules/Identity/Identity.Infrastructure/Directory/UserDirectory.cs
+  s_7fc58453d342bf::t_fbefe08df7d79a 31-32,35-36,42-43,46,48-54
+  s_7fc58453d342bf::t_e743dc6301c1fe 1-30,33-34,37-41,44-45,47,55-114
+src/Modules/Notification/Notification.Infrastructure/Persistence/Repositories/NotificationPreferenceRepository.cs
+  s_7fc58453d342bf::t_4c9ad146452204 1-22
+src/Modules/Notification/Notification.Application/Delivery/IAttachmentStore.cs
+  s_7fc58453d342bf::t_806c54901618c6 1-23
+src/Modules/Identity/Identity.Application/Dtos/User/CreateUserRequest.cs
+  s_7fc58453d342bf::t_8377dc90be08da 8
+src/Modules/Notification/Notification.Domain/Enums/CampaignStatus.cs
+  s_7fc58453d342bf::t_2cd76d392938fa 1-22
+src/Modules/Notification/Notification.Infrastructure/Persistence/Repositories/NotificationMessageRepository.cs
+  s_7fc58453d342bf::t_3ad8c5fdbd97de 1,3,5,10
+  s_7fc58453d342bf::t_d827456d4644a5 77-134
+  s_7fc58453d342bf::t_7be5ef2b6fe2b0 2,4,6-9,11-76,135
+src/Shared/ADNoirBase.Shared.Application/Events/IIntegrationEventHandler.cs
+  s_7fc58453d342bf::t_54da643c194eed 1-9
+src/Modules/Notification/Notification.Application/Configuration/EmailSettings.cs
+  s_7fc58453d342bf::t_cfb2580daa825b 1-17
+src/Modules/Notification/Notification.Application/Validators/Templates/UpdateTemplateValidator.cs
+  s_7fc58453d342bf::t_dc01120b3b3a40 1-48
+src/Modules/Notification/Notification.Domain/Enums/CampaignSendMode.cs
+  s_7fc58453d342bf::t_4538c606499e17 1-10
+src/Modules/Notification/Notification.Application/Dispatching/EnqueueResult.cs
+  s_7fc58453d342bf::t_bfb4ba22ca20b2 1-15
+src/Modules/Notification/Notification.Infrastructure/Email/LogEmailSender.cs
+  s_7fc58453d342bf::t_38965f8d1dd173 1-30
+src/Shared/ADNoirBase.Shared.Contracts/Directory/UserDirectoryEntry.cs
+  s_7fc58453d342bf::t_13fa5b1e03d586 1-13
+src/Modules/Notification/Notification.Infrastructure/Persistence/Repositories/InAppNotificationRepository.cs
+  s_7fc58453d342bf::t_e84571ab11a98f 1-59
+src/Modules/Notification/Notification.Application/Dtos/Templates/CreateTemplateRequest.cs
+  s_7fc58453d342bf::t_b2afb4ad29ad43 1-19
+src/Modules/Notification/Notification.Application/Services/Templates/NotificationTemplateService.cs
+  s_7fc58453d342bf::t_b07a581a66716a 127-134
+  s_7fc58453d342bf::t_232edd54e103f8 49-50
+  s_7fc58453d342bf::t_6f084f9485e0d3 296-313
+  s_7fc58453d342bf::t_b406c063921a43 1-48,51-78,86-126,135-295,314-324
+  s_7fc58453d342bf::t_048f6991a6a613 79-85
+src/Modules/Notification/Notification.Application/Services/Preferences/NotificationPreferenceService.cs
+  s_7fc58453d342bf::t_570409f18dc5da 1-89
+src/Modules/Identity/Identity.Application/Dtos/User/UserDto.cs
+  s_7fc58453d342bf::t_4054101af9961f 11
+src/Modules/Notification/Notification.Domain/Entities/NotificationTemplate.cs
+  s_7fc58453d342bf::t_637d84e5e80b40 1-118
+ADNoirBase.sln
+  s_7fc58453d342bf::t_f59171d52288d2 46-53,232-267,288-291
+src/Modules/Notification/Notification.Infrastructure/Persistence/NotificationClassMaps.cs
+  s_7fc58453d342bf::t_1bb8b2c94dfefd 1-32
+src/Modules/Notification/Notification.Application/Delivery/INotificationDeliveryService.cs
+  s_7fc58453d342bf::t_44c11263fe2008 1-12
+src/Shared/ADNoirBase.Shared.Contracts/Directory/UserAudienceFilter.cs
+  s_7fc58453d342bf::t_9ca2c70bd1d50e 1-14
+src/Modules/Notification/Notification.Infrastructure/Storage/GridFsAttachmentStore.cs
+  s_7fc58453d342bf::t_ee54897294b60a 1-84
+src/Modules/Notification/Notification.Application/Configuration/SmsSettings.cs
+  s_7fc58453d342bf::t_9c8579f1ffafe1 1-11
+src/Shared/ADNoirBase.Shared.Contracts/IntegrationEvents/UserRegisteredIntegrationEvent.cs
+  s_7fc58453d342bf::t_a26160aa1e6c91 1-12
+src/Modules/Notification/Notification.Application/Delivery/SendResult.cs
+  s_7fc58453d342bf::t_afa563d63d1cf6 1-14
+src/Modules/Notification/Notification.Infrastructure/Persistence/Repositories/NotificationTemplateRepository.cs
+  s_7fc58453d342bf::t_7b2bf0be5cc847 38-47,49-78
+  s_7fc58453d342bf::t_f011dd5f272597 1,3,5,8
+  s_7fc58453d342bf::t_47ebf0121b724b 2,4,6-7,9-37,79
+  s_7fc58453d342bf::t_e217775e4c710f 48
+src/Modules/Identity/Identity.Application/Validators/User/PhoneNumberRules.cs
+  s_7fc58453d342bf::t_65dc0620753e2f 1-12
+src/Modules/Identity/Identity.Infrastructure/Persistence/Configurations/UserConfiguration.cs
+  s_7fc58453d342bf::t_d24f83402ad9dc 32-34
+src/Modules/Notification/Notification.Application/Configuration/SmsProvider.cs
+  s_7fc58453d342bf::t_20313f82aca869 1-7
+src/Shared/ADNoirBase.Shared.Contracts/IntegrationEvents/IIntegrationEvent.cs
+  s_7fc58453d342bf::t_e8290d5b1770a6 1-12
+src/Tools/ADNoirBase.DbMigrator/Program.cs
+  s_7fc58453d342bf::t_469558aebe3ff6 60-65
+  s_7fc58453d342bf::t_fcb57773865782 8-9
+  s_7fc58453d342bf::t_76d0a69011474b 35,37,40
+  s_7fc58453d342bf::t_3f3a693c2473f4 36
+src/Modules/Notification/Notification.Application/Campaigns/ICampaignExpansionService.cs
+  s_7fc58453d342bf::t_89c587024f700a 1-17
+src/Modules/Notification/Notification.Application/Templating/TemplateModelKeys.cs
+  s_7fc58453d342bf::t_e73986a1ffb30a 1-26
+src/Modules/Notification/Notification.Domain/ValueObjects/NotificationAttachmentRef.cs
+  s_7fc58453d342bf::t_9a1f4397ba42b7 1-16
+src/Modules/Notification/Notification.Infrastructure/Sms/LogSmsSender.cs
+  s_7fc58453d342bf::t_04af3af82cd737 1-26
+src/Modules/Notification/Notification.Application/Configuration/DeliverySettings.cs
+  s_7fc58453d342bf::t_a324b9c471d717 1-26
+Directory.Packages.props
+  s_7fc58453d342bf::t_e0f0c326cf911a 18-19
+  s_7fc58453d342bf::t_56dc7df44e05b1 15
+  s_7fc58453d342bf::t_8af14905f46be1 20-21
+  s_7fc58453d342bf::t_23aa1442023ae4 36-37
+src/Modules/Notification/Notification.Application/Dtos/Campaigns/CampaignAudienceDto.cs
+  s_7fc58453d342bf::t_5e6c385866cb29 1-12
+src/Modules/Notification/Notification.Infrastructure/Templating/ScribanTemplateRenderer.cs
+  s_7fc58453d342bf::t_5bbce3ad744c70 6
+  s_7fc58453d342bf::t_1dd10a842eb503 1-5,7-122
+src/Modules/Notification/Notification.Application/Templating/TemplateModelBuilder.cs
+  s_7fc58453d342bf::t_7b23f4e358160c 1-62
+src/Modules/Notification/Notification.Application/Dtos/Templates/TemplateQuery.cs
+  s_7fc58453d342bf::t_00c2d9319bba88 1-10
+src/Modules/Notification/Notification.Application/Services/Templates/INotificationTemplateService.cs
+  s_7fc58453d342bf::t_13baae79ee4463 1-32
+src/Modules/Notification/Notification.Domain/Entities/NotificationCampaign.cs
+  s_7fc58453d342bf::t_f30215644b24ed 1-121
+docs/NOTIFICATION_STATUS.md
+  s_7fc58453d342bf::t_15e67d19245b30 1-128
+src/Modules/Notification/Notification.Application/Configuration/NotificationSettingsValidator.cs
+  s_7fc58453d342bf::t_ab8c504407d829 1-55
+src/Modules/Notification/Notification.Application/Configuration/AttachmentSettings.cs
+  s_7fc58453d342bf::t_2e914906d5a95b 1-26
+src/Modules/Notification/Notification.Application/Services/Campaigns/NotificationCampaignService.cs
+  s_7fc58453d342bf::t_81c098150e83b2 1-226
+README.md
+  s_7fc58453d342bf::t_dd43c2e6e8b45b 174,177-180,182-184,192-194
+  s_7fc58453d342bf::t_591c3195a2962c 144-147,181
+src/Modules/Notification/Notification.Domain/Interfaces/Repositories/INotificationPreferenceRepository.cs
+  s_7fc58453d342bf::t_1c273f4f0015db 1-13
+src/Modules/Identity/Identity.Infrastructure/Persistence/Migrations/20261027160026_AddUserPhoneNumber.Designer.cs
+  s_7fc58453d342bf::t_5d5ef096c7e875 1-247
+src/Modules/Notification/Notification.Application/Configuration/SmtpSettings.cs
+  s_7fc58453d342bf::t_ff05a6c025c5aa 1-17
+src/Modules/Notification/Notification.Domain/Entities/NotificationPreference.cs
+  s_7fc58453d342bf::t_5c8eaa87b78657 1-79
+src/Modules/Identity/Identity.Application/Dtos/User/UpdateProfileRequest.cs
+  s_7fc58453d342bf::t_f3ecc0941c3fcf 3-6
+src/Modules/Notification/Notification.Application/Dtos/Templates/TemplateTestSendRequest.cs
+  s_7fc58453d342bf::t_1748ee521e4cd8 1-8
+src/Modules/Identity/Identity.Application/Validators/User/UpdateProfileValidator.cs
+  s_7fc58453d342bf::t_87d83f4abd2af0 18-22
+src/Modules/Notification/Notification.Domain/ValueObjects/CampaignAudience.cs
+  s_7fc58453d342bf::t_98041fa057fb13 1,10,16,21-26,29-30
+  s_7fc58453d342bf::t_b08c64391afe24 2-9,11-15,31
+  s_7fc58453d342bf::t_d11e62c4ef1ca0 17-20,27-28
+src/Modules/Notification/Notification.Infrastructure/DependencyInjection.cs
+  s_7fc58453d342bf::t_eb985694a84050 5
+  s_7fc58453d342bf::t_63c19e262726e2 61
+  s_7fc58453d342bf::t_554c99aeba687e 7
+  s_7fc58453d342bf::t_56bdd75a407e34 56
+  s_7fc58453d342bf::t_ea03a7bcbbdf85 80,82-89
+  s_7fc58453d342bf::t_d46341f5fa4fe8 1,3-4,8-9,12-14,20-22,24-25,35-38,45-55,59-60,62-79,81
+  s_7fc58453d342bf::t_3c4f49616794eb 39-44
+  s_7fc58453d342bf::t_37181714c403e1 2,6,10-11,15-19,23,26-34,57-58,90-91
+src/Modules/Notification/Notification.Application/Delivery/OutgoingSms.cs
+  s_7fc58453d342bf::t_c384c96953e40d 1-10
+src/Modules/Notification/Notification.Infrastructure/Delivery/NotificationDeliveryWorker.cs
+  s_7fc58453d342bf::t_3521fb19547190 1-110
+src/Modules/Notification/Notification.Infrastructure/Email/MimeMessageFactory.cs
+  s_7fc58453d342bf::t_79fa7b20551104 1-59,61-79
+  s_7fc58453d342bf::t_2349d6a1ce3494 60
+src/Modules/Notification/Notification.Application/Services/Campaigns/INotificationCampaignService.cs
+  s_7fc58453d342bf::t_a41556f4efba71 1-29
+src/Modules/Notification/Notification.Application/Dtos/Templates/TemplatePreviewResponse.cs
+  s_7fc58453d342bf::t_6db68ece3b0029 1-8
+src/Modules/Notification/Notification.Application/Dtos/Templates/TemplateDto.cs
+  s_7fc58453d342bf::t_194337bcdd209e 1-24
+src/Shared/ADNoirBase.Shared.Application/Interfaces/IUserDirectory.cs
+  s_7fc58453d342bf::t_c0e048cc7c488c 1-22
+src/Modules/Notification/Notification.Infrastructure/Notification.Infrastructure.csproj
+  s_7fc58453d342bf::t_03324c00cf48a6 1-9,11-16
+  s_7fc58453d342bf::t_0befb62185d669 10
+src/Modules/Notification/Notification.Domain/Enums/NotificationChannel.cs
+  s_7fc58453d342bf::t_a41d21b0c4dcea 1-8
+src/Modules/Notification/Notification.Infrastructure/Persistence/NotificationCollections.cs
+  s_7fc58453d342bf::t_5d898250877a5b 1-13
+src/Modules/Notification/Notification.Domain/Enums/NotificationPriority.cs
+  s_7fc58453d342bf::t_9847a0f4234b30 1-9
+src/Modules/Notification/Notification.Application/Configuration/EmailProvider.cs
+  s_7fc58453d342bf::t_f2b71f80f28997 1-12
+src/Modules/Notification/Notification.Domain/Interfaces/Repositories/INotificationCampaignRepository.cs
+  s_7fc58453d342bf::t_81d5cf9c02d88f 1-13
+src/Modules/Notification/Notification.Application/Templating/ITemplateRenderer.cs
+  s_7fc58453d342bf::t_04215c1cbe968d 1-17
+src/Modules/Notification/Notification.Application/Dtos/Templates/UpdateTemplateRequest.cs
+  s_7fc58453d342bf::t_a682e9df1aca11 1-21
+src/Modules/Notification/Notification.Application/Templating/NotificationComposer.cs
+  s_7fc58453d342bf::t_e99538df3e4294 1-121
+src/Shared/ADNoirBase.Shared.Contracts/Directory/UserDirectoryStatus.cs
+  s_7fc58453d342bf::t_2f63b5e3fcae6c 1-12
+src/Shared/ADNoirBase.Shared.Infrastructure/Persistence/Mongo/MongoSerialization.cs
+  s_7fc58453d342bf::t_cdeda22cf7679e 9-10,12,26-36
+src/Modules/Identity/Identity.Domain/Entities/User.cs
+  s_7fc58453d342bf::t_7cfca16179289b 45,49,52-54
+  s_7fc58453d342bf::t_27fd5bd2af5531 12-15,55
+  s_7fc58453d342bf::t_da8a718c5ba76b 30-31,40
+src/Modules/Notification/Notification.Domain/Notification.Domain.csproj
+  s_7fc58453d342bf::t_948b5ae55b0174 1-7
+src/Tools/ADNoirBase.DbMigrator/Seeders/NotificationTemplateSeeder.cs
+  s_7fc58453d342bf::t_f3ab92b89db191 1-32
+src/Modules/Notification/Notification.Application/Dtos/Campaigns/CampaignListDto.cs
+  s_7fc58453d342bf::t_cbcb7381441135 1-14
+src/Shared/ADNoirBase.Shared.Contracts/IntegrationEvents/UserPasswordChangedIntegrationEvent.cs
+  s_7fc58453d342bf::t_712170a8f446c6 1-13
+src/Modules/Identity/Identity.Infrastructure/Persistence/Migrations/IdentityDbContextModelSnapshot.cs
+  s_7fc58453d342bf::t_5d5ef096c7e875 150-153
+src/Tools/ADNoirBase.DbMigrator/Seeders/SystemNotificationTemplates.cs
+  s_7fc58453d342bf::t_a8d9fef39b1b6d 1-229
+src/Modules/Notification/Notification.Application/Configuration/CampaignSettings.cs
+  s_7fc58453d342bf::t_92b906a860b90a 1-14
+src/ADNoirBase.API/Program.cs
+  s_7fc58453d342bf::t_ae0d793b797923 6
+  s_7fc58453d342bf::t_0de4d1f4ed5498 23-24,27-28
+src/Modules/Notification/Notification.Application/Campaigns/CampaignExpansionService.cs
+  s_7fc58453d342bf::t_0205ef52c1ec2d 1-21,23-40,42-43,46-57,59,61,64,68,70,72,79-100,108,110,112,116,119,132,134,137-139,141,160-162,164-166,168,170-173,175-176,183,186-188,190,192,194-195,198-200,203-204,206-211,213-228,232-235,238-255
+  s_7fc58453d342bf::t_6ad568f915d242 22,41,44-45,58,60,62-63,65-67,69,71,73-78,101-107,109,111,113-115,117-118,120-131,133,135-136,140,142-159,163,167,169,174,177-182,184-185,189,191,193,196-197,201-202,205,212,229-231,236-237
+src/Modules/Notification/Notification.Application/Validators/Templates/TemplateRules.cs
+  s_7fc58453d342bf::t_0c338dd0c7ba07 1-23
+src/ADNoirBase.API/ADNoirBase.API.csproj
+  s_7fc58453d342bf::t_0e8f72c82268d9 3-6
+  s_7fc58453d342bf::t_aa59489f45f897 9
+src/Modules/Notification/Notification.Application/Dtos/Templates/TemplateVariableDto.cs
+  s_7fc58453d342bf::t_bf86c4ece33120 1-6
+src/Modules/Notification/Notification.Application/Configuration/NotificationSettings.cs
+  s_7fc58453d342bf::t_29d38aa9592444 1-15,23-32
+  s_7fc58453d342bf::t_662934c01e2fe7 16-22
+src/Modules/Notification/Notification.Domain/Interfaces/Repositories/IInAppNotificationRepository.cs
+  s_7fc58453d342bf::t_8a39c7b0275770 1-19
+src/Modules/Identity/Identity.Application/Dtos/User/UpdateUserRequest.cs
+  s_7fc58453d342bf::t_a8082257a14f3b 3-6
+src/Modules/Notification/Notification.Application/Dtos/Preferences/UnsubscribeRequest.cs
+  s_7fc58453d342bf::t_92abd81ab6d2ac 1-4
+src/Modules/Notification/Notification.Application/Delivery/OutgoingEmail.cs
+  s_7fc58453d342bf::t_4a33d2314315c3 1-33
+src/Modules/Notification/Notification.Domain/ValueObjects/NotificationRecipient.cs
+  s_7fc58453d342bf::t_9f54eab148abed 1-10
+src/Modules/Notification/Notification.Application/Delivery/EmailAttachment.cs
+  s_7fc58453d342bf::t_1486405b7e52de 1-12
+src/Shared/ADNoirBase.Shared.Infrastructure/Events/InProcessIntegrationEventPublisher.cs
+  s_7fc58453d342bf::t_45f64f8891e2f8 1-53
+src/Modules/Notification/Notification.Application/Validators/Templates/TemplateVariableValidator.cs
+  s_7fc58453d342bf::t_1add9d25a3ab31 1-20
+src/Modules/Notification/Notification.Domain/ValueObjects/TemplateVariable.cs
+  s_7fc58453d342bf::t_5735b18e36c8c0 1-7
+src/Modules/Identity/Identity.Application/Services/User/UserService.cs
+  s_7fc58453d342bf::t_b3ac112de51f12 44
+  s_7fc58453d342bf::t_8983acb93c8f27 63
+src/Modules/Notification/Notification.Domain/Enums/NotificationStatus.cs
+  s_7fc58453d342bf::t_4c4d8edd0aa83e 1-21
+src/Modules/Notification/Notification.Application/Validators/Templates/CreateTemplateValidator.cs
+  s_7fc58453d342bf::t_43f4b468da8d18 20-23,26-38,40-42,47-50,52-54,60,64
+  s_7fc58453d342bf::t_1f4db84c874df6 1-19,24-25,39,43-46,51,55-59,61-63
+src/Modules/Notification/Notification.Infrastructure/Persistence/NotificationIndexInitializer.cs
+  s_7fc58453d342bf::t_244769ca61eb79 1-131
+src/Modules/Notification/Notification.Application/Delivery/NullInAppNotificationPublisher.cs
+  s_7fc58453d342bf::t_1b9ef46c372a97 1-12
+src/Modules/Notification/Notification.Infrastructure/Email/PickupDirectoryEmailSender.cs
+  s_7fc58453d342bf::t_314a68a7caa495 1-48
+src/Modules/Notification/Notification.Application/Dtos/Campaigns/CampaignDto.cs
+  s_7fc58453d342bf::t_e6f34195241767 1-19
+docs/FIRST_RUN.md
+  s_7fc58453d342bf::t_9af25f9df4b78c 1-300
+src/Shared/ADNoirBase.Shared.Application/Events/IIntegrationEventPublisher.cs
+  s_7fc58453d342bf::t_7d8d18771d731e 1-13
+src/Modules/Notification/Notification.Application/Delivery/NotificationDeliveryService.cs
+  s_7fc58453d342bf::t_7aae6a59e14a52 143
+  s_7fc58453d342bf::t_2d8368dacd5752 119
+  s_7fc58453d342bf::t_80dd9975e9c443 1-118,120-142,144-270
+src/Modules/Notification/Notification.Domain/Enums/CampaignAudienceType.cs
+  s_7fc58453d342bf::t_acddb5d6dc48b2 1-19
+src/Modules/Notification/Notification.Application/Delivery/ISmsSender.cs
+  s_7fc58453d342bf::t_fc100c8667f7c2 1-6
+src/Modules/Notification/Notification.Domain/Enums/NotificationLogPolicy.cs
+  s_7fc58453d342bf::t_77bf4ea07a0181 1-14
+src/Modules/Notification/Notification.Domain/Enums/NotificationCategory.cs
+  s_7fc58453d342bf::t_a30deff90fc199 1-18
+src/Modules/Notification/Notification.Application/Messages/NotificationMessageCodes.cs
+  s_7fc58453d342bf::t_c3a836c3de158f 1-63
+src/Modules/Notification/Notification.Application/NotificationApplicationRegistration.cs
+  s_7fc58453d342bf::t_2c9a1f277d6761 5
+  s_7fc58453d342bf::t_c7220af49b3a5d 7-9
+  s_7fc58453d342bf::t_b4f10238fd77b6 10-11
+  s_7fc58453d342bf::t_b0a592355a2132 32,34-35
+  s_7fc58453d342bf::t_54d27dbe417d03 1-4,6,12-20,27-28,33,39-44
+  s_7fc58453d342bf::t_d6ad59e229b5a0 29-31,36-38
+  s_7fc58453d342bf::t_d461adb69f058f 21-26
+src/Modules/Notification/Notification.Application/Notification.Application.csproj
+  s_7fc58453d342bf::t_1d6eab15fd316f 10
+  s_7fc58453d342bf::t_fde9f0cb09b378 13
+  s_7fc58453d342bf::t_1b010c3f963844 1-9,11-12,14-16
+src/Modules/Notification/Notification.Application/Preferences/UnsubscribeLinkFactory.cs
+  s_7fc58453d342bf::t_ecfac8790365bc 1-76
+src/Modules/Notification/Notification.Infrastructure/Campaigns/CampaignWorker.cs
+  s_7fc58453d342bf::t_07e89abea6017a 1-93
+src/Modules/Notification/Notification.Application/Dtos/Campaigns/CampaignAudiencePreviewDto.cs
+  s_7fc58453d342bf::t_e2aa085c50b1f9 1-7
+.editorconfig
+  s_7fc58453d342bf::t_9eea873d34ff63 43-47
+src/Modules/Notification/Notification.Application/Dtos/Templates/TemplatePreviewRequest.cs
+  s_7fc58453d342bf::t_51b33c466fcee6 1-12
+src/Modules/Notification/Notification.Application/Validators/Templates/TemplatePreviewValidator.cs
+  s_7fc58453d342bf::t_8d216b01b2dda8 1-27
+src/Modules/Notification/Notification.Application/Delivery/IEmailSender.cs
+  s_7fc58453d342bf::t_ca403bc9d682c1 1-10
+src/Tools/ADNoirBase.DbMigrator/ADNoirBase.DbMigrator.csproj
+  s_7fc58453d342bf::t_75c3672f74e9e5 9
+src/Modules/Notification/Notification.Application/Dtos/Templates/TemplateListDto.cs
+  s_7fc58453d342bf::t_6d606ae549c9f7 1-15
+src/Modules/Notification/Notification.Application/Preferences/IUnsubscribeLinkFactory.cs
+  s_7fc58453d342bf::t_e0f5fa3b6084a1 1-13
+src/Modules/Identity/Identity.Infrastructure/Persistence/Migrations/20261027160026_AddUserPhoneNumber.cs
+  s_7fc58453d342bf::t_5d5ef096c7e875 1-31
+src/ADNoirBase.API/appsettings.json
+  s_7fc58453d342bf::t_986de0830fa3ed 33-74
+src/Modules/Notification/Notification.Application/Dispatching/INotificationDispatcher.cs
+  s_7fc58453d342bf::t_25a67e1adcea69 1-10
+src/Modules/Notification/Notification.Infrastructure/Email/SmtpEmailSender.cs
+  s_7fc58453d342bf::t_38d223558c0f16 1-37,39-82
+  s_7fc58453d342bf::t_087a444a24d6e1 38
+src/Modules/Notification/Notification.Application/Dtos/Preferences/UpdateNotificationPreferenceRequest.cs
+  s_7fc58453d342bf::t_076aeecf35f8e7 1-6
+src/Modules/Notification/Notification.Domain/Entities/NotificationMessage.cs
+  s_7fc58453d342bf::t_3b6ce7b1152233 1-232
+src/Modules/Notification/Notification.Application/Services/Preferences/INotificationPreferenceService.cs
+  s_7fc58453d342bf::t_6106d5a9cfc4e5 1-16
+src/Modules/Notification/Notification.Domain/Entities/InAppNotification.cs
+  s_7fc58453d342bf::t_186e5194fb805d 1-46
+src/Modules/Notification/Notification.Application/Configuration/SmtpSecurity.cs
+  s_7fc58453d342bf::t_48847aa2b5ddb3 1-16
+src/Modules/Notification/Notification.Application/Dtos/Campaigns/CreateCampaignRequest.cs
+  s_7fc58453d342bf::t_e549ddcbca990b 1-11
+src/Modules/Notification/Notification.Application/Templating/TemplateRenderResult.cs
+  s_7fc58453d342bf::t_df83fd51dd176a 1-14
+ui/app/(dashboard)/users/[id]/page.tsx
+  s_7fc58453d342bf::t_92311f6a28545f 82-84
+  s_7fc58453d342bf::t_ffab5277559922 14,81
+src/Modules/Notification/Notification.Application/Templating/ComposedNotification.cs
+  s_7fc58453d342bf::t_fbdcddd6ab1121 1-15
+src/Modules/Notification/Notification.Infrastructure/Persistence/Repositories/NotificationCampaignRepository.cs
+  s_7fc58453d342bf::t_e6f67f739e3893 1-42
+src/Modules/Notification/Notification.Application/Templating/INotificationComposer.cs
+  s_7fc58453d342bf::t_de3a9f9d694f72 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9a2c424dfd2fec8ad0d77475236d0f0f0b52100b",
+  "prompts": {},
+  "sessions": {
+    "s_7fc58453d342bf": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b8497c2c-25f9-4897-b779-87c03649b090",
+        "model": "claude-opus-5"
+      },
+      "human_author": "TURKCELL\\TCADEMIRKAYA <ali.demirkaya@turkcell.com.tr>"
+    }
+  }
+}
