@@ -1,0 +1,19 @@
+docs/SECURITY_ISSUES.md
+  s_7fc58453d342bf::t_f8c3d32d02ffa0 1-171
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "334bd63a2bcd2234d7db5cfe461e8dcfc95712ea",
+  "prompts": {},
+  "sessions": {
+    "s_7fc58453d342bf": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b8497c2c-25f9-4897-b779-87c03649b090",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "TURKCELL\\TCADEMIRKAYA <ali.demirkaya@turkcell.com.tr>"
+    }
+  }
+}
