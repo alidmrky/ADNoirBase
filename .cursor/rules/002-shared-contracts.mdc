@@ -1,0 +1,23 @@
+---
+description: Shared.Contracts katman kuralları
+globs: ["src/Shared/ADNoirBase.Shared.Contracts/**/*.cs"]
+---
+
+# Shared.Contracts Kuralları
+
+## Amaç
+Dış bağımlılık sıfır. Sadece kontrat tipleri — response'lar ve mesaj kodları.
+
+## ✅ İzin verilenler
+- `record`, `enum`, `sealed class` (sadece yardımcı tipler)
+- `static class` (factory ve helper)
+
+## ❌ Yasak
+- İş mantığı
+- Dış NuGet paket referansı
+- Infrastructure veya Application referansı
+
+## Mesaj Kodu Kuralı
+- `MessageCodes.cs` sadece Common, Validation, Auth, Gateway kodlarını içerir
+- Modüle özgü kodlar o modülün Application projesindedir
+- Literal string kullanımı **kesinlikle yasak**

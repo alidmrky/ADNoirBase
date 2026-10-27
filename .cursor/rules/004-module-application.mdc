@@ -1,0 +1,30 @@
+---
+description: Modül Application katman kuralları
+globs: ["src/Modules/**/**.Application/**/*.cs"]
+---
+
+# Modül Application Kuralları
+
+## Bağımlılık sırası
+`[Mod].Domain` + `Shared.Application` + `Shared.Contracts` — başka hiçbir şey
+
+## ❌ Kesinlikle yasak
+- Infrastructure'a referans
+- EF Core / MongoDB / BCrypt import
+- Exception fırlatmak (`throw new ...`)
+
+## ✅ Zorunlular
+- Tüm servis metodları `Task<BaseResponse>` veya `Task<BaseResponse<T>>` döner
+- MessageCode için sadece `[Mod]MessageCodes.*` veya `MessageCodes.*` sabitleri
+- Her modülde `[Mod]MessageCodes.cs` dosyası olmalı
+- `IModuleRegistration` implement edilmeli
+
+## Klasör yapısı
+```
+[Mod].Application/
+├── Messages/[Mod]MessageCodes.cs
+├── Dtos/
+├── Services/
+├── Validators/
+└── DependencyInjection.cs
+```

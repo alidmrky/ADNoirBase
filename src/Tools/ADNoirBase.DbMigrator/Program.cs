@@ -1,0 +1,67 @@
+﻿using ADNoirBase.DbMigrator.Seeders;
+using ADNoirBase.Shared.Infrastructure.Persistence.Interceptors;
+using Identity.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
+var host = Host.CreateDefaultBuilder(args)
+    .ConfigureAppConfiguration(config =>
+    {
+        config.AddJsonFile("appsettings.json", optional: false);
+        config.AddEnvironmentVariables();
+    })
+    .ConfigureServices((context, services) =>
+    {
+        services.AddLogging(logging => logging.AddConsole());
+
+        // AuditInterceptor için mock CurrentUserService
+        services.AddScoped<ADNoirBase.Shared.Application.Interfaces.ICurrentUserService,
+            MigratorCurrentUserService>();
+        services.AddScoped<AuditInterceptor>();
+
+        services.AddDbContext<IdentityDbContext>((sp, options) =>
+        {
+            options.UseNpgsql(context.Configuration.GetConnectionString("PostgreSQL"));
+            options.AddInterceptors(sp.GetRequiredService<AuditInterceptor>());
+        });
+
+        services.AddScoped<DefaultRolesSeeder>();
+        services.AddScoped<AdminUserSeeder>();
+    })
+    .Build();
+
+using var scope = host.Services.CreateScope();
+var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+
+try
+{
+    logger.LogInformation("DbMigrator başlıyor...");
+
+    var identityContext = scope.ServiceProvider.GetRequiredService<IdentityDbContext>();
+
+    logger.LogInformation("Identity migration'ları uygulanıyor...");
+    await identityContext.Database.MigrateAsync();
+
+    logger.LogInformation("Seed verileri ekleniyor...");
+    await scope.ServiceProvider.GetRequiredService<DefaultRolesSeeder>().SeedAsync();
+    await scope.ServiceProvider.GetRequiredService<AdminUserSeeder>().SeedAsync();
+
+    logger.LogInformation("DbMigrator tamamlandı.");
+}
+catch (Exception ex)
+{
+    logger.LogError(ex, "DbMigrator hatası");
+    throw;
+}
+
+/// <summary>Migrator için dummy ICurrentUserService — "system" kullanıcısı döner.</summary>
+public sealed class MigratorCurrentUserService : ADNoirBase.Shared.Application.Interfaces.ICurrentUserService
+{
+    public string? UserId => "system";
+    public string? UserName => "system";
+    public IReadOnlyList<string> Roles => [];
+    public bool IsAuthenticated => false;
+}

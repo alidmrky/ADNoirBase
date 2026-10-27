@@ -1,0 +1,68 @@
+services:
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: adnoirbase_postgres
+    environment:
+      POSTGRES_DB: adnoirbase
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongodb:
+    image: mongo:7
+    container_name: adnoirbase_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  migrator:
+    build:
+      context: .
+      dockerfile: src/Tools/ADNoirBase.DbMigrator/Dockerfile.migrator
+    container_name: adnoirbase_migrator
+    environment:
+      ConnectionStrings__PostgreSQL: "Host=postgres;Port=5432;Database=adnoirbase;Username=postgres;Password=postgres"
+      ADMIN_EMAIL: "admin@adnoirbase.com"
+      ADMIN_PASSWORD: "Admin@123456"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: adnoirbase_api
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__PostgreSQL: "Host=postgres;Port=5432;Database=adnoirbase;Username=postgres;Password=postgres"
+      ConnectionStrings__MongoDB: "mongodb://mongodb:27017"
+      Jwt__SecretKey: "CHANGE_THIS_SECRET_KEY_MIN_32_CHARS_LONG!!"
+      Jwt__Issuer: "ADNoirBase"
+      Jwt__Audience: "ADNoirBase"
+    depends_on:
+      migrator:
+        condition: service_completed_successfully
+      mongodb:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  mongo_data:

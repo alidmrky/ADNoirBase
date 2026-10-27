@@ -1,0 +1,29 @@
+---
+description: Altın kural — dosya organizasyonu
+globs: ["**/*.cs"]
+alwaysApply: true
+---
+
+# Dosya Organizasyonu — Altın Kural
+
+## ✅ Her dosyada yalnızca 1 tip tanımlanır
+- 1 class → 1 dosya
+- 1 interface → 1 dosya
+- 1 record → 1 dosya
+- 1 enum → 1 dosya
+
+## ❌ Kesinlikle yasak
+- İç içe class (nested class)
+- Aynı dosyada birden fazla public tip
+- Dosya içinde inline enum veya record tanımı
+
+## ✅ Dosya adı = tip adı
+- `UserRepository.cs` → `public sealed class UserRepository`
+- `IUserRepository.cs` → `public interface IUserRepository`
+- `UserDto.cs` → `public sealed record UserDto`
+
+## ✅ Namespace = klasör yapısı
+```
+src/Modules/Identity/Identity.Application/Services/Auth/AuthService.cs
+→ namespace Identity.Application.Services.Auth
+```
