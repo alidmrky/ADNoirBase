@@ -1,0 +1,279 @@
+ADNoirBase.sln
+  s_7fc58453d342bf::t_7d723dca1f3578 1-245
+src/ADNoirBase.API/ADNoirBase.API.csproj
+  s_7fc58453d342bf::t_b813bebc9c9f05 1-26
+src/ADNoirBase.API/ADNoirBase.API.http
+  s_7fc58453d342bf::t_f3e87455b65918 1-6
+src/ADNoirBase.API/Program.cs
+  s_7fc58453d342bf::t_d016c1a7f9291f 1-46
+src/ADNoirBase.API/Properties/launchSettings.json
+  s_7fc58453d342bf::t_0373bdd8721f77 1-23
+src/ADNoirBase.API/appsettings.Development.json
+  s_7fc58453d342bf::t_b20977d6b84be5 1-11
+src/ADNoirBase.API/appsettings.json
+  s_7fc58453d342bf::t_de004fd6b78e86 1-43
+src/Modules/Identity/Identity.Application/Identity.Application.csproj
+  s_7fc58453d342bf::t_0dc91e118505ad 1-18
+src/Modules/Identity/Identity.Domain/Identity.Domain.csproj
+  s_7fc58453d342bf::t_d9fb5a4d5e8d26 1-13
+src/Modules/Identity/Identity.Infrastructure/Identity.Infrastructure.csproj
+  s_7fc58453d342bf::t_1932557e48b246 1-23
+src/Modules/Identity/Identity.Infrastructure/Persistence/Migrations/20261027123655_InitialCreate.Designer.cs
+  s_7fc58453d342bf::t_49bec7377fc1b5 1-243
+src/Modules/Identity/Identity.Infrastructure/Persistence/Migrations/20261027123655_InitialCreate.cs
+  s_7fc58453d342bf::t_97f0d61f328af0 1-177
+src/Modules/Identity/Identity.Infrastructure/Persistence/Migrations/IdentityDbContextModelSnapshot.cs
+  s_7fc58453d342bf::t_525d00403fb809 1-240
+src/Shared/ADNoirBase.Shared.Application/ADNoirBase.Shared.Application.csproj
+  s_7fc58453d342bf::t_47e2de93ae1c7b 1-19
+src/Shared/ADNoirBase.Shared.Contracts/ADNoirBase.Shared.Contracts.csproj
+  s_7fc58453d342bf::t_6e80721860fc6f 1-9
+src/Shared/ADNoirBase.Shared.Domain/ADNoirBase.Shared.Domain.csproj
+  s_7fc58453d342bf::t_afa47a637115ae 1-13
+src/Shared/ADNoirBase.Shared.Infrastructure/ADNoirBase.Shared.Infrastructure.csproj
+  s_7fc58453d342bf::t_fc8729f32b04fd 1-20
+src/Tools/ADNoirBase.DbMigrator/ADNoirBase.DbMigrator.csproj
+  s_7fc58453d342bf::t_fd38edbd8e7df6 1-24
+src/Tools/ADNoirBase.DbMigrator/Program.cs
+  s_7fc58453d342bf::t_fee63d1f40bb7c 1-67
+tests/Architecture.Tests/Architecture.Tests.csproj
+  s_7fc58453d342bf::t_6f2ac07e59b050 1-21
+tests/Architecture.Tests/UnitTest1.cs
+  s_7fc58453d342bf::t_0fe811014b3e1b 1-10
+tests/Identity.Application.Tests/Identity.Application.Tests.csproj
+  s_7fc58453d342bf::t_2f3356a0c056a0 1-21
+tests/Identity.Application.Tests/UnitTest1.cs
+  s_7fc58453d342bf::t_779d949359043b 1-10
+tests/Identity.Infrastructure.Tests/Identity.Infrastructure.Tests.csproj
+  s_7fc58453d342bf::t_024c694993fe41 1-21
+tests/Identity.Infrastructure.Tests/UnitTest1.cs
+  s_7fc58453d342bf::t_685afcfe16f581 1-10
+tests/Shared.Contracts.Tests/Shared.Contracts.Tests.csproj
+  s_7fc58453d342bf::t_13b62f3ab9b626 1-21
+tests/Shared.Contracts.Tests/UnitTest1.cs
+  s_7fc58453d342bf::t_547cf8761d9674 1-10
+tests/Shared.Domain.Tests/Shared.Domain.Tests.csproj
+  s_7fc58453d342bf::t_d007d37fc65de4 1-21
+tests/Shared.Domain.Tests/UnitTest1.cs
+  s_7fc58453d342bf::t_830ac6679ddd24 1-10
+.cursor/agents/code-reviewer.md
+  s_7fc58453d342bf::t_1e6abc79a6e2be 1-37
+.cursor/agents/module-creator.md
+  s_7fc58453d342bf::t_9e1fcdd811ceba 1-43
+.cursor/rules/000-project-overview.mdc
+  s_7fc58453d342bf::t_d75f17bf100255 1-26
+.cursor/rules/001-file-organization.mdc
+  s_7fc58453d342bf::t_0db9956ff3cc64 1-29
+.cursor/rules/002-shared-contracts.mdc
+  s_7fc58453d342bf::t_48465f5d8439cd 1-23
+.cursor/rules/003-shared-domain.mdc
+  s_7fc58453d342bf::t_29ea7bf926bda1 1-27
+.cursor/rules/004-module-application.mdc
+  s_7fc58453d342bf::t_9a426c6718812e 1-30
+.cursor/rules/005-module-infrastructure.mdc
+  s_7fc58453d342bf::t_95d243c19c0306 1-24
+.cursor/rules/006-api.mdc
+  s_7fc58453d342bf::t_69fbd04cb6ba36 1-26
+.editorconfig
+  s_7fc58453d342bf::t_1cf17fd60d57a0 1-34
+.gitignore
+  s_7fc58453d342bf::t_264837a6c3466d 1-37
+Dockerfile
+  s_7fc58453d342bf::t_31be195a50deb5 1-26
+docker-compose.yml
+  s_7fc58453d342bf::t_9f328ee579c784 1-68
+docs/PROJECT_OVERVIEW.md
+  s_7fc58453d342bf::t_4323b2a01205bc 1-146
+src/ADNoirBase.API/Controllers/BaseApiController.cs
+  s_7fc58453d342bf::t_f255a51a72ea0d 1-28
+src/ADNoirBase.API/Controllers/Identity/AuthController.cs
+  s_7fc58453d342bf::t_16ee15fd899b73 1-73
+src/ADNoirBase.API/Controllers/Identity/UserController.cs
+  s_7fc58453d342bf::t_71a1ae6e5081c5 1-56
+src/ADNoirBase.API/Controllers/Identity/UserManagementController.cs
+  s_7fc58453d342bf::t_da18023b769eb8 1-76
+src/ADNoirBase.API/Extensions/CorsExtensions.cs
+  s_7fc58453d342bf::t_470a2333306798 1-26
+src/ADNoirBase.API/Extensions/HealthCheckExtensions.cs
+  s_7fc58453d342bf::t_e2e90ae5eec755 1-27
+src/ADNoirBase.API/Extensions/ModuleExtensions.cs
+  s_7fc58453d342bf::t_cd0e563ebd8947 1-32
+src/ADNoirBase.API/Extensions/SwaggerExtensions.cs
+  s_7fc58453d342bf::t_dd0887cafe4e19 1-61
+src/ADNoirBase.API/Middleware/CorrelationIdMiddleware.cs
+  s_7fc58453d342bf::t_8ed56fd01dedca 1-27
+src/ADNoirBase.API/Middleware/ExceptionHandlingMiddleware.cs
+  s_7fc58453d342bf::t_08f3a14a65622a 1-51
+src/Modules/Identity/Identity.Application/DependencyInjection.cs
+  s_7fc58453d342bf::t_cb37b129d7eecc 1-23
+src/Modules/Identity/Identity.Application/Dtos/Auth/LoginRequest.cs
+  s_7fc58453d342bf::t_cf34db3f0eef6a 1-3
+src/Modules/Identity/Identity.Application/Dtos/Auth/LoginResponse.cs
+  s_7fc58453d342bf::t_b9bb083e7e7856 1-11
+src/Modules/Identity/Identity.Application/Dtos/Auth/RefreshTokenRequest.cs
+  s_7fc58453d342bf::t_3f7911384ffbda 1-3
+src/Modules/Identity/Identity.Application/Dtos/Auth/RefreshTokenResponse.cs
+  s_7fc58453d342bf::t_50a579157ffa1e 1-7
+src/Modules/Identity/Identity.Application/Dtos/Auth/RegisterRequest.cs
+  s_7fc58453d342bf::t_e895cf6c41788f 1-8
+src/Modules/Identity/Identity.Application/Dtos/User/ChangePasswordRequest.cs
+  s_7fc58453d342bf::t_710d8c42a9d3b4 1-6
+src/Modules/Identity/Identity.Application/Dtos/User/CreateUserRequest.cs
+  s_7fc58453d342bf::t_1eb102ea9fa025 1-8
+src/Modules/Identity/Identity.Application/Dtos/User/UpdateProfileRequest.cs
+  s_7fc58453d342bf::t_23b933ac31ead9 1-3
+src/Modules/Identity/Identity.Application/Dtos/User/UpdateUserRequest.cs
+  s_7fc58453d342bf::t_c74c421ea9c446 1-3
+src/Modules/Identity/Identity.Application/Dtos/User/UserDto.cs
+  s_7fc58453d342bf::t_3b2a5223c77cce 1-14
+src/Modules/Identity/Identity.Application/Dtos/User/UserListDto.cs
+  s_7fc58453d342bf::t_cdaa373e4c1239 1-11
+src/Modules/Identity/Identity.Application/Messages/IdentityMessageCodes.cs
+  s_7fc58453d342bf::t_be89386a93fe16 1-40
+src/Modules/Identity/Identity.Application/Services/Auth/AuthService.cs
+  s_7fc58453d342bf::t_583da6fb8cd775 1-148
+src/Modules/Identity/Identity.Application/Services/Auth/IAuthService.cs
+  s_7fc58453d342bf::t_7b53a4b5f93282 1-12
+src/Modules/Identity/Identity.Application/Services/User/IUserManagementService.cs
+  s_7fc58453d342bf::t_06c37582d785a1 1-18
+src/Modules/Identity/Identity.Application/Services/User/IUserService.cs
+  s_7fc58453d342bf::t_5cdd5056390c16 1-11
+src/Modules/Identity/Identity.Application/Services/User/UserManagementService.cs
+  s_7fc58453d342bf::t_10598b91c046ed 1-136
+src/Modules/Identity/Identity.Application/Services/User/UserService.cs
+  s_7fc58453d342bf::t_083818a3af3727 1-80
+src/Modules/Identity/Identity.Application/Validators/Auth/LoginValidator.cs
+  s_7fc58453d342bf::t_049aae1366b9da 1-18
+src/Modules/Identity/Identity.Application/Validators/Auth/RefreshTokenValidator.cs
+  s_7fc58453d342bf::t_7424416e716b3f 1-14
+src/Modules/Identity/Identity.Application/Validators/Auth/RegisterValidator.cs
+  s_7fc58453d342bf::t_00f94ca8c6ea5a 1-32
+src/Modules/Identity/Identity.Application/Validators/User/ChangePasswordValidator.cs
+  s_7fc58453d342bf::t_df9de482bd98b9 1-23
+src/Modules/Identity/Identity.Application/Validators/User/UpdateProfileValidator.cs
+  s_7fc58453d342bf::t_766b0eda2d9d9c 1-19
+src/Modules/Identity/Identity.Domain/Entities/RefreshToken.cs
+  s_7fc58453d342bf::t_0d6fad53bb7891 1-38
+src/Modules/Identity/Identity.Domain/Entities/Role.cs
+  s_7fc58453d342bf::t_5e6a20b41177bb 1-33
+src/Modules/Identity/Identity.Domain/Entities/User.cs
+  s_7fc58453d342bf::t_5b3e13c25efa1f 1-74
+src/Modules/Identity/Identity.Domain/Entities/UserRole.cs
+  s_7fc58453d342bf::t_25aa7effc2e82a 1-26
+src/Modules/Identity/Identity.Domain/Enums/UserStatus.cs
+  s_7fc58453d342bf::t_52b9788c2878ea 1-8
+src/Modules/Identity/Identity.Domain/Interfaces/Repositories/IRefreshTokenRepository.cs
+  s_7fc58453d342bf::t_2d6763d0906921 1-10
+src/Modules/Identity/Identity.Domain/Interfaces/Repositories/IRoleRepository.cs
+  s_7fc58453d342bf::t_073b8e4c829b88 1-10
+src/Modules/Identity/Identity.Domain/Interfaces/Repositories/IUserRepository.cs
+  s_7fc58453d342bf::t_9b99a1decb3933 1-11
+src/Modules/Identity/Identity.Infrastructure/DependencyInjection.cs
+  s_7fc58453d342bf::t_2e9a16bce859fc 1-32
+src/Modules/Identity/Identity.Infrastructure/Persistence/Configurations/RefreshTokenConfiguration.cs
+  s_7fc58453d342bf::t_67885a9939b80c 1-21
+src/Modules/Identity/Identity.Infrastructure/Persistence/Configurations/RoleConfiguration.cs
+  s_7fc58453d342bf::t_d0f9ba44942c99 1-36
+src/Modules/Identity/Identity.Infrastructure/Persistence/Configurations/UserConfiguration.cs
+  s_7fc58453d342bf::t_8ffb5ac8eb0949 1-60
+src/Modules/Identity/Identity.Infrastructure/Persistence/Configurations/UserRoleConfiguration.cs
+  s_7fc58453d342bf::t_963b40acb5495d 1-17
+src/Modules/Identity/Identity.Infrastructure/Persistence/IdentityDbContext.cs
+  s_7fc58453d342bf::t_51d956f116cd70 1-21
+src/Modules/Identity/Identity.Infrastructure/Persistence/Repositories/BasePostgresRepository.cs
+  s_7fc58453d342bf::t_ff6a57ddb74ee5 1-119
+src/Modules/Identity/Identity.Infrastructure/Persistence/Repositories/RefreshTokenRepository.cs
+  s_7fc58453d342bf::t_225a0b87e8b40c 1-28
+src/Modules/Identity/Identity.Infrastructure/Persistence/Repositories/RoleRepository.cs
+  s_7fc58453d342bf::t_3fa7edc6869f6f 1-18
+src/Modules/Identity/Identity.Infrastructure/Persistence/Repositories/UserRepository.cs
+  s_7fc58453d342bf::t_b4e79e2bde6960 1-26
+src/Shared/ADNoirBase.Shared.Application/Common/PagedRequest.cs
+  s_7fc58453d342bf::t_72eb81b2209946 1-23
+src/Shared/ADNoirBase.Shared.Application/DependencyInjection.cs
+  s_7fc58453d342bf::t_76ec328e268238 1-15
+src/Shared/ADNoirBase.Shared.Application/IModuleRegistration.cs
+  s_7fc58453d342bf::t_92b04834e0d844 1-14
+src/Shared/ADNoirBase.Shared.Application/Interfaces/ICurrentUserService.cs
+  s_7fc58453d342bf::t_2c777ca075cc2e 1-14
+src/Shared/ADNoirBase.Shared.Application/Interfaces/IPasswordHasher.cs
+  s_7fc58453d342bf::t_3d9c3ddf1e9165 1-7
+src/Shared/ADNoirBase.Shared.Application/Interfaces/ITokenService.cs
+  s_7fc58453d342bf::t_c2fca0eaa969be 1-10
+src/Shared/ADNoirBase.Shared.Application/Validation/ValidationHelper.cs
+  s_7fc58453d342bf::t_a9ecb6e80818cd 1-33
+src/Shared/ADNoirBase.Shared.Contracts/Messages/MessageCodes.cs
+  s_7fc58453d342bf::t_6c754df7ad0b1b 1-52
+src/Shared/ADNoirBase.Shared.Contracts/Pagination/PagedList.cs
+  s_7fc58453d342bf::t_f133aad1eef979 1-24
+src/Shared/ADNoirBase.Shared.Contracts/Responses/BaseResponse.cs
+  s_7fc58453d342bf::t_5328e9a22c49b1 1-136
+src/Shared/ADNoirBase.Shared.Contracts/Responses/BaseResponseOfT.cs
+  s_7fc58453d342bf::t_e9e363dcf570fb 1-73
+src/Shared/ADNoirBase.Shared.Contracts/Responses/MessageSeverity.cs
+  s_7fc58453d342bf::t_8eb183dee954aa 1-8
+src/Shared/ADNoirBase.Shared.Contracts/Responses/PagedResponse.cs
+  s_7fc58453d342bf::t_70e78c4492f2f8 1-17
+src/Shared/ADNoirBase.Shared.Contracts/Responses/ResponseArgs.cs
+  s_7fc58453d342bf::t_fc3f1be1e08f5a 1-13
+src/Shared/ADNoirBase.Shared.Contracts/Responses/ResponseMessage.cs
+  s_7fc58453d342bf::t_d4e9351cd2bad0 1-11
+src/Shared/ADNoirBase.Shared.Contracts/Responses/ResponseStatus.cs
+  s_7fc58453d342bf::t_5b180940aa59f9 1-19
+src/Shared/ADNoirBase.Shared.Domain/Entities/AuditableEntityOfT.cs
+  s_7fc58453d342bf::t_a5ebf85d11057b 1-11
+src/Shared/ADNoirBase.Shared.Domain/Entities/BaseEntityOfT.cs
+  s_7fc58453d342bf::t_7c4b425e27ba20 1-8
+src/Shared/ADNoirBase.Shared.Domain/Entities/EntityAliases.cs
+  s_7fc58453d342bf::t_40caded6c6444b 1-25
+src/Shared/ADNoirBase.Shared.Domain/Entities/FullAuditableEntityOfT.cs
+  s_7fc58453d342bf::t_b6f316378928b1 1-11
+src/Shared/ADNoirBase.Shared.Domain/Entities/SoftDeletableEntityOfT.cs
+  s_7fc58453d342bf::t_0c6b30202d7835 1-29
+src/Shared/ADNoirBase.Shared.Domain/Exceptions/DomainException.cs
+  s_7fc58453d342bf::t_16234f9cb6e491 1-16
+src/Shared/ADNoirBase.Shared.Domain/Interfaces/Repositories/IRepository.cs
+  s_7fc58453d342bf::t_e5b42d9b293b4c 1-59
+src/Shared/ADNoirBase.Shared.Domain/ValueObjects/ValueObject.cs
+  s_7fc58453d342bf::t_601065070d36d2 1-27
+src/Shared/ADNoirBase.Shared.Infrastructure/Authentication/BcryptPasswordHasher.cs
+  s_7fc58453d342bf::t_a33f99035778dd 1-12
+src/Shared/ADNoirBase.Shared.Infrastructure/Authentication/JwtSettings.cs
+  s_7fc58453d342bf::t_a79d884c28a3f2 1-12
+src/Shared/ADNoirBase.Shared.Infrastructure/Authentication/JwtTokenService.cs
+  s_7fc58453d342bf::t_4e2c88e3fd6180 1-67
+src/Shared/ADNoirBase.Shared.Infrastructure/Authentication/JwtTokenServiceAdapter.cs
+  s_7fc58453d342bf::t_76620df468bd55 1-24
+src/Shared/ADNoirBase.Shared.Infrastructure/DependencyInjection.cs
+  s_7fc58453d342bf::t_c71a895fd42f64 1-69
+src/Shared/ADNoirBase.Shared.Infrastructure/Http/ResponseEnricher.cs
+  s_7fc58453d342bf::t_08b94118673967 1-29
+src/Shared/ADNoirBase.Shared.Infrastructure/Identity/CurrentUserService.cs
+  s_7fc58453d342bf::t_ea5b929db99cbd 1-31
+src/Shared/ADNoirBase.Shared.Infrastructure/Persistence/Interceptors/AuditInterceptor.cs
+  s_7fc58453d342bf::t_f41160d268b33d 1-65
+src/Tools/ADNoirBase.DbMigrator/Dockerfile.migrator
+  s_7fc58453d342bf::t_e9bfd340b31ac5 1-13
+src/Tools/ADNoirBase.DbMigrator/Seeders/AdminUserSeeder.cs
+  s_7fc58453d342bf::t_863f84e2889505 1-50
+src/Tools/ADNoirBase.DbMigrator/Seeders/DefaultRolesSeeder.cs
+  s_7fc58453d342bf::t_86aa47f366baaa 1-38
+src/Tools/ADNoirBase.DbMigrator/appsettings.json
+  s_7fc58453d342bf::t_aba424f153f80c 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "31ba0aa05148cfaa19d6d76d4a68778f8299763d",
+  "prompts": {},
+  "sessions": {
+    "s_7fc58453d342bf": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b8497c2c-25f9-4897-b779-87c03649b090",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "TURKCELL\\TCADEMIRKAYA <ali.demirkaya@turkcell.com.tr>"
+    }
+  }
+}
