@@ -1,0 +1,97 @@
+CONTRIBUTING.md
+  s_7fc58453d342bf::t_75a9455ffcaa80 119-120
+src/Modules/Identity/Identity.Application/Messages/IdentityMessageCodes.cs
+  s_7fc58453d342bf::t_ff88a11b70116d 27
+src/Shared/ADNoirBase.Shared.Infrastructure/Persistence/Mongo/MongoRepository.cs
+  s_7fc58453d342bf::t_206a246443a178 1-153,155-178
+  s_7fc58453d342bf::t_a4af6b7705c009 154
+src/Tools/ADNoirBase.DbMigrator/Seeders/AdminUserSeeder.cs
+  s_7fc58453d342bf::t_2bb8bef6f3d860 1
+  s_7fc58453d342bf::t_ab43ba577873df 14,17-20,23
+  s_7fc58453d342bf::t_3db3370f5b8cb1 51
+src/Shared/ADNoirBase.Shared.Domain/Entities/IFullAuditableEntity.cs
+  s_7fc58453d342bf::t_1300a2506b05dd 1-12
+src/Modules/Identity/Identity.Infrastructure/Persistence/Repositories/RoleRepository.cs
+  s_7fc58453d342bf::t_9e1a4b3dc7d56f 2,9
+src/Shared/ADNoirBase.Shared.Infrastructure/Authentication/BcryptPasswordHasher.cs
+  s_7fc58453d342bf::t_0e7d07213214e5 2,8-14,16,18,21-23
+.cursor/agents/module-creator.md
+  s_7fc58453d342bf::t_d5ce84bb52300a 33
+src/Shared/ADNoirBase.Shared.Infrastructure/Persistence/Mongo/MongoDbSettings.cs
+  s_7fc58453d342bf::t_ae6ca18956bd8a 1-9
+src/Shared/ADNoirBase.Shared.Application/Interfaces/IPasswordHasher.cs
+  s_7fc58453d342bf::t_955931bb008ff4 7-9
+src/Shared/ADNoirBase.Shared.Infrastructure/DependencyInjection.cs
+  s_7fc58453d342bf::t_e1bce7b40fd8e2 6,11,13
+  s_7fc58453d342bf::t_29900743ff72e4 35
+  s_7fc58453d342bf::t_6d9e9c8a1176ae 33,36-55
+  s_7fc58453d342bf::t_dadb8c593e3511 56-89
+src/Shared/ADNoirBase.Shared.Infrastructure/Authentication/BcryptSettingsValidator.cs
+  s_7fc58453d342bf::t_9360ad8e998c55 1-25
+src/ADNoirBase.API/appsettings.json
+  s_7fc58453d342bf::t_47699999de3453 16-18
+  s_7fc58453d342bf::t_e4fc2ca33fae94 13-15
+src/Shared/ADNoirBase.Shared.Infrastructure/ADNoirBase.Shared.Infrastructure.csproj
+  s_7fc58453d342bf::t_924682218f3e21 12
+src/Modules/Identity/Identity.Application/Services/Auth/AuthService.cs
+  s_7fc58453d342bf::t_a2c006e2438b83 108,110,115-128
+  s_7fc58453d342bf::t_b382f059e57aa0 67-72
+src/Shared/ADNoirBase.Shared.Infrastructure/Persistence/Postgres/PostgresRepository.cs
+  s_7fc58453d342bf::t_9af7dcfd57420a 8,11-12,14-15,21,25,32-33,83-84,105-106,111
+src/Tools/ADNoirBase.DbMigrator/appsettings.json
+  s_7fc58453d342bf::t_7ec3242ff7f41b 4-6
+src/Modules/Identity/Identity.Domain/Interfaces/Repositories/IRefreshTokenRepository.cs
+  s_7fc58453d342bf::t_922abe995cc08b 9-12
+src/Modules/Identity/Identity.Infrastructure/Persistence/Repositories/UserRepository.cs
+  s_7fc58453d342bf::t_aadeb9769ced5d 2,9
+src/Shared/ADNoirBase.Shared.Infrastructure/Persistence/Mongo/MongoSerialization.cs
+  s_7fc58453d342bf::t_bfe030ea9d448f 1-30
+src/Shared/ADNoirBase.Shared.Infrastructure/Authentication/BcryptSettings.cs
+  s_7fc58453d342bf::t_f5c12b6c0a4cd0 1-9
+src/Tools/ADNoirBase.DbMigrator/Program.cs
+  s_7fc58453d342bf::t_5cdb7131f86023 25
+  s_7fc58453d342bf::t_d450e2b6bf57bd 4
+README.md
+  s_7fc58453d342bf::t_87af3e03596411 246
+  s_7fc58453d342bf::t_9fe69a298f714d 225-226
+  s_7fc58453d342bf::t_8748a32d801063 337-338
+src/Shared/ADNoirBase.Shared.Domain/Entities/IAuditableEntity.cs
+  s_7fc58453d342bf::t_d1b8934022c206 1-15
+src/Shared/ADNoirBase.Shared.Domain/Entities/AuditableEntityOfT.cs
+  s_7fc58453d342bf::t_f5c2b445ffbcd6 4,7,10-16
+docs/SECURITY_ISSUES.md
+  s_7fc58453d342bf::t_0bc31eeadfa6b6 126-129
+  s_7fc58453d342bf::t_9ca25592bfa38d 137-139
+  s_7fc58453d342bf::t_8bb08b28974ec1 80-83
+  s_7fc58453d342bf::t_e68026290d1568 156-158
+src/Shared/ADNoirBase.Shared.Infrastructure/Persistence/Interceptors/AuditInterceptor.cs
+  s_7fc58453d342bf::t_e566d9498807c5 49-50,52,54-55,57,59-64,66-67
+  s_7fc58453d342bf::t_98d2edc6e0fc94 47
+.cursor/rules/005-module-infrastructure.mdc
+  s_7fc58453d342bf::t_6a9dcb297a4e20 12-13
+src/Modules/Identity/Identity.Infrastructure/Persistence/Repositories/RefreshTokenRepository.cs
+  s_7fc58453d342bf::t_1030a12a1e79aa 19-21
+  s_7fc58453d342bf::t_dde3b4338c691d 2,9-10
+src/Shared/ADNoirBase.Shared.Application/Interfaces/CurrentUserServiceExtensions.cs
+  s_7fc58453d342bf::t_6273e4fd31eb0b 1-15
+docs/PROJECT_OVERVIEW.md
+  s_7fc58453d342bf::t_5a3dcedb13d0fb 96
+src/Shared/ADNoirBase.Shared.Domain/Entities/FullAuditableEntityOfT.cs
+  s_7fc58453d342bf::t_64238686d13b1f 4,7,10-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "59694ead5a002d79c3eb04ba4c375b80e6aed308",
+  "prompts": {},
+  "sessions": {
+    "s_7fc58453d342bf": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b8497c2c-25f9-4897-b779-87c03649b090",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "TURKCELL\\TCADEMIRKAYA <ali.demirkaya@turkcell.com.tr>"
+    }
+  }
+}
