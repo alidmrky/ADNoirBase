@@ -1,0 +1,114 @@
+ui/components/ui/badge.tsx
+  s_7fc58453d342bf::t_b4c25a8b30e0da 1-51
+ui/lib/auth.ts
+  s_7fc58453d342bf::t_c17fa293c0461f 1-79
+ui/public/vercel.svg
+  s_7fc58453d342bf::t_dd098aac2b4ab5 1
+ui/components/ui/button.tsx
+  s_7fc58453d342bf::t_daafe155d742a6 1-57
+ui/components.json
+  s_7fc58453d342bf::t_daafe155d742a6 1-25
+ui/app/layout.tsx
+  s_7fc58453d342bf::t_00930c09dea331 1-4,6,9-14,16-20,22-32,34
+  s_7fc58453d342bf::t_dd098aac2b4ab5 5,7-8,15,21,33,35
+ui/.gitignore
+  s_7fc58453d342bf::t_dd098aac2b4ab5 1-41
+ui/app/(dashboard)/page.tsx
+  s_7fc58453d342bf::t_20ee2510cfc941 1-62
+ui/components/layout/dashboard-nav.tsx
+  s_7fc58453d342bf::t_e4e6ca369c3ac6 1-100
+ui/app/api/auth/[...nextauth]/route.ts
+  s_7fc58453d342bf::t_d91e3fd3659f5e 1-3
+ui/app/(auth)/register/page.tsx
+  s_7fc58453d342bf::t_5e7a67ae6ae4e7 1-20
+ui/app/(dashboard)/users/page.tsx
+  s_7fc58453d342bf::t_fca48514989016 1-89
+ui/AGENTS.md
+  s_7fc58453d342bf::t_dd098aac2b4ab5 1-9
+ui/public/file.svg
+  s_7fc58453d342bf::t_dd098aac2b4ab5 1
+ui/app/(dashboard)/layout.tsx
+  s_7fc58453d342bf::t_73a976363bee1e 1-24
+ui/app/(auth)/layout.tsx
+  s_7fc58453d342bf::t_e15e778e4c63b6 1-13
+ui/components/auth/register-form.tsx
+  s_7fc58453d342bf::t_c32c80c18dc4c8 44
+  s_7fc58453d342bf::t_0bc47cb011b75b 1-43,45-120
+ui/lib/utils.ts
+  s_7fc58453d342bf::t_daafe155d742a6 1
+ui/components/ui/card.tsx
+  s_7fc58453d342bf::t_b4c25a8b30e0da 1-102
+ui/lib/api-client.ts
+  s_7fc58453d342bf::t_6c2e203505d7d6 1-102
+ui/components/auth/login-form.tsx
+  s_7fc58453d342bf::t_bc79850c7dc112 36
+  s_7fc58453d342bf::t_b5d4efcfa2fc12 1-35,37-115
+ui/public/next.svg
+  s_7fc58453d342bf::t_dd098aac2b4ab5 1
+ui/package.json
+  s_7fc58453d342bf::t_daafe155d742a6 12-15,21-22
+  s_7fc58453d342bf::t_530e039844c50e 17-18,20,23,35
+  s_7fc58453d342bf::t_dd098aac2b4ab5 1-11,16,19,24-34
+ui/README.md
+  s_7fc58453d342bf::t_dd098aac2b4ab5 1-36
+ui/public/globe.svg
+  s_7fc58453d342bf::t_dd098aac2b4ab5 1
+ui/public/window.svg
+  s_7fc58453d342bf::t_dd098aac2b4ab5 1
+ui/components/ui/separator.tsx
+  s_7fc58453d342bf::t_b4c25a8b30e0da 1-24
+ui/app/globals.css
+  s_7fc58453d342bf::t_daafe155d742a6 2-3,5,10,12-48,51-83,86-117,119-130
+  s_7fc58453d342bf::t_dd098aac2b4ab5 1,4,6-9,11,49-50,84-85,118
+ui/app/(auth)/login/page.tsx
+  s_7fc58453d342bf::t_26688c46d5fab7 1-20
+ui/app/(dashboard)/users/[id]/page.tsx
+  s_7fc58453d342bf::t_617da25ab553f1 1-116
+ui/middleware.ts
+  s_7fc58453d342bf::t_237779a6212f33 1-7
+ui/components/ui/dropdown-menu.tsx
+  s_7fc58453d342bf::t_b4c25a8b30e0da 1-267
+ui/components/ui/label.tsx
+  s_7fc58453d342bf::t_b4c25a8b30e0da 1-19
+ui/app/page.tsx
+  s_7fc58453d342bf::t_dd098aac2b4ab5 3,12
+  s_7fc58453d342bf::t_cbac5406a8daa0 1-2,4-11
+ui/components/ui/toast.tsx
+  s_7fc58453d342bf::t_b4c25a8b30e0da 1-234
+ui/components/layout/theme-provider.tsx
+  s_7fc58453d342bf::t_b4f5d4d4e617e6 1-11
+ui/eslint.config.mjs
+  s_7fc58453d342bf::t_dd098aac2b4ab5 1-18
+ui/components/ui/skeleton.tsx
+  s_7fc58453d342bf::t_b4c25a8b30e0da 1-13
+ui/next.config.ts
+  s_7fc58453d342bf::t_dd098aac2b4ab5 1-17
+ui/tsconfig.json
+  s_7fc58453d342bf::t_dd098aac2b4ab5 1-34
+ui/components/ui/input.tsx
+  s_7fc58453d342bf::t_b4c25a8b30e0da 1-19
+ui/components/ui/table.tsx
+  s_7fc58453d342bf::t_b4c25a8b30e0da 1-115
+ui/components/ui/avatar.tsx
+  s_7fc58453d342bf::t_b4c25a8b30e0da 1-108
+ui/types/next-auth.d.ts
+  s_7fc58453d342bf::t_f8fb67042263b1 1-23
+ui/package-lock.json
+  s_7fc58453d342bf::t_ad4a1183a5bd42 1-9105
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7d8ce7c8f77041cfbe55f39834d94df9b2fb256f",
+  "prompts": {},
+  "sessions": {
+    "s_7fc58453d342bf": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "b8497c2c-25f9-4897-b779-87c03649b090",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "TURKCELL\\TCADEMIRKAYA <ali.demirkaya@turkcell.com.tr>"
+    }
+  }
+}
