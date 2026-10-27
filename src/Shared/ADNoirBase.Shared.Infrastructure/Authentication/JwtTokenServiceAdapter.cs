@@ -17,7 +17,7 @@ public sealed class JwtTokenServiceAdapter : ITokenService
         _inner.GenerateAccessToken(claims);
 
     public string GenerateRefreshToken() =>
-        _inner.GenerateRefreshToken();
+        JwtTokenService.GenerateRefreshToken();
 
     public DateTime RefreshTokenExpiry =>
         _inner.RefreshTokenExpiry;

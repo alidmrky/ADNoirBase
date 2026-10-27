@@ -59,7 +59,9 @@ public sealed class User : SoftDeletableEntity<Guid>
     {
         FailedLoginCount++;
         if (FailedLoginCount >= lockThreshold)
+        {
             Status = UserStatus.Locked;
+        }
     }
 
     public void Deactivate() => Status = UserStatus.Inactive;

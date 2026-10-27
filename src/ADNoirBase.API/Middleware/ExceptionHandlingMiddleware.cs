@@ -1,12 +1,21 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using ADNoirBase.Shared.Contracts.Messages;
 using ADNoirBase.Shared.Contracts.Responses;
 using ADNoirBase.Shared.Domain.Exceptions;
-using System.Text.Json;
 
 namespace ADNoirBase.API.Middleware;
 
 public sealed class ExceptionHandlingMiddleware
 {
+    // Controller'ların AddJsonOptions ayarıyla aynı olmalı; bu middleware
+    // pipeline'ın dışında kendi serileştirmesini yapar.
+    private static readonly JsonSerializerOptions SerializerOptions = new()
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        Converters = { new JsonStringEnumConverter() }
+    };
+
     private readonly RequestDelegate _next;
     private readonly ILogger<ExceptionHandlingMiddleware> _logger;
 
@@ -41,10 +50,7 @@ public sealed class ExceptionHandlingMiddleware
         context.Response.StatusCode = statusCode;
         context.Response.ContentType = "application/json";
 
-        var json = JsonSerializer.Serialize(response, new JsonSerializerOptions
-        {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-        });
+        var json = JsonSerializer.Serialize(response, SerializerOptions);
 
         await context.Response.WriteAsync(json);
     }

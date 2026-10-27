@@ -10,17 +10,24 @@ public sealed class UserRepository : BasePostgresRepository<User, Guid>, IUserRe
     public UserRepository(IdentityDbContext context, ICurrentUserService currentUserService)
         : base(context, currentUserService) { }
 
-    public async Task<User?> FindByEmailAsync(string email, CancellationToken ct = default) =>
-        await DbSet
-            .FirstOrDefaultAsync(u => u.Email == email.Trim().ToLowerInvariant(), ct);
+    public async Task<User?> FindByEmailAsync(string email, CancellationToken ct = default)
+    {
+        var normalized = Normalize(email);
+        return await DbSet.FirstOrDefaultAsync(u => u.Email == normalized, ct);
+    }
 
-    public async Task<bool> EmailExistsAsync(string email, CancellationToken ct = default) =>
-        await DbSet
-            .AnyAsync(u => u.Email == email.Trim().ToLowerInvariant(), ct);
+    public async Task<bool> EmailExistsAsync(string email, CancellationToken ct = default)
+    {
+        var normalized = Normalize(email);
+        return await DbSet.AnyAsync(u => u.Email == normalized, ct);
+    }
 
     public async Task<User?> FindWithRolesAsync(Guid userId, CancellationToken ct = default) =>
         await DbSet
             .Include(u => u.UserRoles)
                 .ThenInclude(ur => ur.Role)
             .FirstOrDefaultAsync(u => u.Id == userId, ct);
+
+    /// <summary>E-postalar her zaman trim'lenmiş ve küçük harfe çevrilmiş olarak saklanır.</summary>
+    private static string Normalize(string email) => email.Trim().ToLowerInvariant();
 }

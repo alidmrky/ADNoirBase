@@ -15,9 +15,11 @@ public abstract class BasePostgresRepository<TEntity, TId> : IRepository<TEntity
     where TEntity : BaseEntity<TId>
     where TId : IEquatable<TId>
 {
-    protected readonly IdentityDbContext Context;
-    protected readonly DbSet<TEntity> DbSet;
     private readonly ICurrentUserService _currentUserService;
+
+    protected IdentityDbContext Context { get; }
+
+    protected DbSet<TEntity> DbSet { get; }
 
     protected BasePostgresRepository(IdentityDbContext context, ICurrentUserService currentUserService)
     {
@@ -114,6 +116,8 @@ public abstract class BasePostgresRepository<TEntity, TId> : IRepository<TEntity
     {
         var entity = await FindByIdAsync(id, ct);
         if (entity is not null)
+        {
             await DeleteAsync(entity, ct);
+        }
     }
 }

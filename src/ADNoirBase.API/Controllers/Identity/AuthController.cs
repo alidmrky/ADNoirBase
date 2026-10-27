@@ -33,7 +33,9 @@ public sealed class AuthController : BaseApiController
     {
         var validation = await _loginValidator.ValidateAsync(request, ct);
         if (!validation.IsValid)
+        {
             return ToHttpResponse(ValidationHelper.ToValidationFailedResponse(validation));
+        }
 
         var result = await _authService.LoginAsync(request, ct);
         return ToHttpResponse(result);
@@ -45,7 +47,9 @@ public sealed class AuthController : BaseApiController
     {
         var validation = await _registerValidator.ValidateAsync(request, ct);
         if (!validation.IsValid)
+        {
             return ToHttpResponse(ValidationHelper.ToValidationFailedResponse(validation));
+        }
 
         var result = await _authService.RegisterAsync(request, ct);
         return ToHttpResponse(result);
@@ -57,7 +61,9 @@ public sealed class AuthController : BaseApiController
     {
         var validation = await _refreshValidator.ValidateAsync(request, ct);
         if (!validation.IsValid)
+        {
             return ToHttpResponse(ValidationHelper.ToValidationFailedResponse(validation));
+        }
 
         var result = await _authService.RefreshTokenAsync(request, ct);
         return ToHttpResponse(result);

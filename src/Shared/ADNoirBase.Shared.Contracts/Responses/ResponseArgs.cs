@@ -6,7 +6,9 @@ public static class ResponseArgs
         (string Key, object? Value)[] args)
     {
         if (args is null || args.Length == 0)
+        {
             return null;
+        }
 
         return args.ToDictionary(a => a.Key, a => a.Value);
     }

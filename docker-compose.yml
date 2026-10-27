@@ -4,15 +4,15 @@ services:
     image: postgres:16-alpine
     container_name: adnoirbase_postgres
     environment:
-      POSTGRES_DB: adnoirbase
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ${POSTGRES_DB:?set POSTGRES_DB in .env}
+      POSTGRES_USER: ${POSTGRES_USER:?set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -36,9 +36,9 @@ services:
       dockerfile: src/Tools/ADNoirBase.DbMigrator/Dockerfile.migrator
     container_name: adnoirbase_migrator
     environment:
-      ConnectionStrings__PostgreSQL: "Host=postgres;Port=5432;Database=adnoirbase;Username=postgres;Password=postgres"
-      ADMIN_EMAIL: "admin@adnoirbase.com"
-      ADMIN_PASSWORD: "Admin@123456"
+      ConnectionStrings__PostgreSQL: "Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}"
+      ADMIN_EMAIL: ${ADMIN_EMAIL:?set ADMIN_EMAIL in .env}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?set ADMIN_PASSWORD in .env}
     depends_on:
       postgres:
         condition: service_healthy
@@ -52,11 +52,12 @@ services:
       - "8080:8080"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ConnectionStrings__PostgreSQL: "Host=postgres;Port=5432;Database=adnoirbase;Username=postgres;Password=postgres"
+      ConnectionStrings__PostgreSQL: "Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}"
       ConnectionStrings__MongoDB: "mongodb://mongodb:27017"
-      Jwt__SecretKey: "CHANGE_THIS_SECRET_KEY_MIN_32_CHARS_LONG!!"
-      Jwt__Issuer: "ADNoirBase"
-      Jwt__Audience: "ADNoirBase"
+      Jwt__SecretKey: ${Jwt__SecretKey:?set Jwt__SecretKey in .env}
+      Jwt__Issuer: ${Jwt__Issuer:-ADNoirBase}
+      Jwt__Audience: ${Jwt__Audience:-ADNoirBase}
+      Cors__AllowedOrigins__0: ${Cors__AllowedOrigins__0:-http://localhost:3000}
     depends_on:
       migrator:
         condition: service_completed_successfully

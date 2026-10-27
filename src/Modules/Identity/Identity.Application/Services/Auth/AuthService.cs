@@ -3,9 +3,9 @@ using ADNoirBase.Shared.Application.Interfaces;
 using ADNoirBase.Shared.Contracts.Responses;
 using Identity.Application.Dtos.Auth;
 using Identity.Application.Messages;
-using IdentityEntities = Identity.Domain.Entities;
 using Identity.Domain.Enums;
 using Identity.Domain.Interfaces.Repositories;
+using IdentityEntities = Identity.Domain.Entities;
 
 namespace Identity.Application.Services.Auth;
 
@@ -44,10 +44,14 @@ public sealed class AuthService : IAuthService
         }
 
         if (user.Status == UserStatus.Locked)
+        {
             return BaseResponse<LoginResponse>.Unauthorized(IdentityMessageCodes.Auth.AccountLocked);
+        }
 
         if (user.Status == UserStatus.Inactive)
+        {
             return BaseResponse<LoginResponse>.Unauthorized(IdentityMessageCodes.Auth.AccountInactive);
+        }
 
         var userWithRoles = await _userRepository.FindWithRolesAsync(user.Id, ct) ?? user;
         var roles = userWithRoles.UserRoles.Select(ur => ur.Role.Code).ToList();
@@ -80,7 +84,9 @@ public sealed class AuthService : IAuthService
         RegisterRequest request, CancellationToken ct = default)
     {
         if (await _userRepository.EmailExistsAsync(request.Email, ct))
+        {
             return BaseResponse.Conflict(IdentityMessageCodes.User.EmailConflict);
+        }
 
         var passwordHash = _passwordHasher.Hash(request.Password);
         var user = IdentityEntities.User.Create(request.Email, passwordHash, request.FirstName, request.LastName);
@@ -96,11 +102,15 @@ public sealed class AuthService : IAuthService
             .FindActiveByTokenAsync(request.RefreshToken, ct);
 
         if (existingToken is null || !existingToken.IsActive)
+        {
             return BaseResponse<RefreshTokenResponse>.Unauthorized(IdentityMessageCodes.Auth.RefreshTokenInvalid);
+        }
 
         var user = await _userRepository.FindWithRolesAsync(existingToken.UserId, ct);
         if (user is null)
+        {
             return BaseResponse<RefreshTokenResponse>.NotFound(IdentityMessageCodes.User.NotFound);
+        }
 
         var roles = user.UserRoles.Select(ur => ur.Role.Code).ToList();
         var newAccessToken = _tokenService.GenerateAccessToken(BuildClaims(user, roles));
@@ -133,7 +143,7 @@ public sealed class AuthService : IAuthService
         return BaseResponse.Success(IdentityMessageCodes.Auth.LogoutSuccess);
     }
 
-    private static IEnumerable<Claim> BuildClaims(IdentityEntities.User user, IEnumerable<string> roles)
+    private static List<Claim> BuildClaims(IdentityEntities.User user, IEnumerable<string> roles)
     {
         var claims = new List<Claim>
         {

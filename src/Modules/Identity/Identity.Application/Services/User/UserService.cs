@@ -26,13 +26,17 @@ public sealed class UserService : IUserService
     public async Task<BaseResponse<UserDto>> GetProfileAsync(CancellationToken ct = default)
     {
         if (!_currentUserService.IsAuthenticated || _currentUserService.UserId is null)
+        {
             return BaseResponse<UserDto>.Unauthorized(MessageCodes.Common.Unauthorized);
+        }
 
         var userId = Guid.Parse(_currentUserService.UserId);
         var user = await _userRepository.FindWithRolesAsync(userId, ct);
 
         if (user is null)
+        {
             return BaseResponse<UserDto>.NotFound(IdentityMessageCodes.User.NotFound);
+        }
 
         var roles = user.UserRoles.Select(ur => ur.Role.Code).ToList();
         return BaseResponse<UserDto>.Success(
@@ -44,13 +48,17 @@ public sealed class UserService : IUserService
         UpdateProfileRequest request, CancellationToken ct = default)
     {
         if (!_currentUserService.IsAuthenticated || _currentUserService.UserId is null)
+        {
             return BaseResponse.Unauthorized();
+        }
 
         var userId = Guid.Parse(_currentUserService.UserId);
         var user = await _userRepository.FindByIdAsync(userId, ct);
 
         if (user is null)
+        {
             return BaseResponse.NotFound(IdentityMessageCodes.User.NotFound);
+        }
 
         user.UpdateProfile(request.FirstName, request.LastName);
         await _userRepository.UpdateAsync(user, ct);
@@ -61,16 +69,22 @@ public sealed class UserService : IUserService
         ChangePasswordRequest request, CancellationToken ct = default)
     {
         if (!_currentUserService.IsAuthenticated || _currentUserService.UserId is null)
+        {
             return BaseResponse.Unauthorized();
+        }
 
         var userId = Guid.Parse(_currentUserService.UserId);
         var user = await _userRepository.FindByIdAsync(userId, ct);
 
         if (user is null)
+        {
             return BaseResponse.NotFound(IdentityMessageCodes.User.NotFound);
+        }
 
         if (!_passwordHasher.Verify(request.CurrentPassword, user.PasswordHash))
+        {
             return BaseResponse.Unauthorized(IdentityMessageCodes.Auth.CredentialsInvalid);
+        }
 
         var newHash = _passwordHasher.Hash(request.NewPassword);
         user.ChangePassword(newHash);

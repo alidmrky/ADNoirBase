@@ -9,8 +9,9 @@
 ## 🔴 Kritik — Hemen
 
 ### S2 — appsettings.json içinde cleartext kimlik bilgisi
-- [ ] Tamamlandı
-- **Konum:** `src/ADNoirBase.API/appsettings.json:3` (`Password=postgres`) ve `:7` (`CHANGE_THIS_SECRET_KEY_MIN_32_CHARS_LONG!!`)
+- [x] Tamamlandı — 27 Ekim 2026
+- **Yapılanlar:** `appsettings.json` ve DbMigrator `appsettings.json` içindeki tüm gizli değerler boşaltıldı. `docker-compose.yml` artık `${VAR:?}` ile `.env`'den okur ve değişken eksikse başlamaz. Kök dizine `.env.example` eklendi. `JwtSettingsValidator` anahtar eksik veya 32 karakterden kısaysa uygulamayı başlatmıyor.
+- **Konum:** `src/ADNoirBase.API/appsettings.json:3` (DB parolası) ve `:7` (JWT imzalama anahtarı) — değerler bilerek buraya yazılmadı
 - **Risk:** Kaynak kod paylaşımında (GitHub, CI log, ekip üyesi) DB parolası ve JWT imzalama anahtarı sızdırılır. Anahtar ele geçirilirse tüm token'lar sahte üretilebilir.
 - **Çözüm:**
   1. `appsettings.json`'daki gerçek değerleri boş string veya placeholder yap (`""` veya `"CHANGE_ME"`)
@@ -21,12 +22,13 @@
 ---
 
 ### S5 — AdminUserSeeder hardcoded fallback parolası
-- [ ] Tamamlandı
+- [x] Tamamlandı — 27 Ekim 2026
+- **Yapılanlar:** `ADMIN_EMAIL` ve `ADMIN_PASSWORD` artık `ReadRequired` ile zorunlu; eksikse `InvalidOperationException` fırlatılıyor. Ayrıca parola için 12 karakter alt sınırı eklendi.
 - **Konum:** `src/Tools/ADNoirBase.DbMigrator/Seeders/AdminUserSeeder.cs:11`
   ```csharp
-  var adminPassword = Environment.GetEnvironmentVariable("ADMIN_PASSWORD") ?? "Admin@123456";
+  var adminPassword = Environment.GetEnvironmentVariable("ADMIN_PASSWORD") ?? "<sabit varsayılan parola>";
   ```
-- **Risk:** `ADMIN_PASSWORD` env var set edilmezse üretim ortamına bilinen parola (`Admin@123456`) ile admin hesabı açılır. Bu durumun fark edilmesi zordur.
+- **Risk:** `ADMIN_PASSWORD` env var set edilmezse üretim ortamına kaynak kodda açıkça duran, herkesin bilebileceği bir parolayla admin hesabı açılır. Bu durumun fark edilmesi zordur.
 - **Çözüm:** Fallback'i kaldır — env var yoksa `InvalidOperationException` fırlat:
   ```csharp
   var adminPassword = Environment.GetEnvironmentVariable("ADMIN_PASSWORD")
@@ -157,10 +159,25 @@
 
 ## Ek: CORS Konfigürasyonu
 
-- [ ] Tamamlandı
+- [x] Tamamlandı — 27 Ekim 2026
+- **Yapılanlar:** Varsayılan `AllowedOrigins` boş listeye çekildi. `CorsExtensions` artık Development dışında `"*"` görürse `InvalidOperationException` fırlatıyor; liste boşsa hiçbir çapraz kaynak isteği kabul edilmiyor.
 - **Konum:** `src/ADNoirBase.API/appsettings.json:14` — `"AllowedOrigins": [ "*" ]`
-- **Risk:** Her origin'den istek kabul edilir — CSRF koruması zayıflar.
-- **Çözüm:** `appsettings.json`'da production URL'leri belirt; `"*"` yalnızca `appsettings.Development.json`'da kalsın.
+
+---
+
+## Ek: /health endpoint'i kimlik doğrulaması istemiyordu
+
+- [x] Tamamlandı — 27 Ekim 2026
+- **Yapılanlar:** Tek `/health` ucu ikiye ayrıldı. `/health/live` hiçbir bağımlılığı yoklamayan, düz `Healthy` dönen anonim uç. Veritabanı adlarını ve hata ayrıntılarını içeren `/health/ready` ise `RequireAuthorization()` ile korunuyor.
+- **Konum:** `src/ADNoirBase.API/Extensions/HealthCheckExtensions.cs`
+
+---
+
+## Ek: Enum'lar sözleşmede sayı olarak serileştiriliyordu
+
+- [x] Tamamlandı — 27 Ekim 2026
+- **Yapılanlar:** `ResponseStatus` ve `MessageSeverity` JSON'a sayı olarak yazılıyordu, oysa `ui/lib/api-client.ts` bunları string olarak tipliyordu. API'ye `JsonStringEnumConverter` eklendi; `ExceptionHandlingMiddleware` kendi serileştiricisini kullandığı için orada da aynı ayar yapıldı.
+- **Konum:** `src/ADNoirBase.API/Program.cs`, `src/ADNoirBase.API/Middleware/ExceptionHandlingMiddleware.cs`
 
 ---
 

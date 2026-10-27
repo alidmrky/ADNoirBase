@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Dashboard",
 }
 
+// Rendered per user from the session; there is no shared shell to prerender.
+export const instant = false
+
 export default async function DashboardPage() {
   const session = await auth()
 

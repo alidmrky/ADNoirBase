@@ -8,6 +8,8 @@ namespace ADNoirBase.DbMigrator.Seeders;
 
 public sealed class AdminUserSeeder
 {
+    private const int MinimumPasswordLength = 12;
+
     private readonly IdentityDbContext _context;
     private readonly ILogger<AdminUserSeeder> _logger;
 
@@ -19,8 +21,14 @@ public sealed class AdminUserSeeder
 
     public async Task SeedAsync(CancellationToken ct = default)
     {
-        var adminEmail = Environment.GetEnvironmentVariable("ADMIN_EMAIL") ?? "admin@adnoirbase.com";
-        var adminPassword = Environment.GetEnvironmentVariable("ADMIN_PASSWORD") ?? "Admin@123456";
+        var adminEmail = ReadRequired("ADMIN_EMAIL");
+        var adminPassword = ReadRequired("ADMIN_PASSWORD");
+
+        if (adminPassword.Length < MinimumPasswordLength)
+        {
+            throw new InvalidOperationException(
+                $"ADMIN_PASSWORD en az {MinimumPasswordLength} karakter olmalıdır.");
+        }
 
         if (await _context.Users.AnyAsync(u => u.Email == adminEmail, ct))
         {
@@ -46,5 +54,23 @@ public sealed class AdminUserSeeder
         await _context.SaveChangesAsync(ct);
 
         _logger.LogInformation("Admin user created: {Email}", adminEmail);
+    }
+
+    /// <summary>
+    /// Seed kimlik bilgileri için varsayılan değer yoktur. Eksik bir değişken,
+    /// herkesin bildiği bir parolayla admin hesabı oluşturmaktan iyidir.
+    /// </summary>
+    private static string ReadRequired(string variableName)
+    {
+        var value = Environment.GetEnvironmentVariable(variableName);
+
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new InvalidOperationException(
+                $"{variableName} ortam değişkeni tanımlı değil. " +
+                "Değerleri .env.example dosyasını örnek alarak ayarlayın.");
+        }
+
+        return value.Trim();
     }
 }

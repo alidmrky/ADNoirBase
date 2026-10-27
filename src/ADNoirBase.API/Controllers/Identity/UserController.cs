@@ -37,7 +37,9 @@ public sealed class UserController : BaseApiController
     {
         var validation = await _updateProfileValidator.ValidateAsync(request, ct);
         if (!validation.IsValid)
+        {
             return ToHttpResponse(ValidationHelper.ToValidationFailedResponse(validation));
+        }
 
         var result = await _userService.UpdateProfileAsync(request, ct);
         return ToHttpResponse(result);
@@ -48,7 +50,9 @@ public sealed class UserController : BaseApiController
     {
         var validation = await _changePasswordValidator.ValidateAsync(request, ct);
         if (!validation.IsValid)
+        {
             return ToHttpResponse(ValidationHelper.ToValidationFailedResponse(validation));
+        }
 
         var result = await _userService.ChangePasswordAsync(request, ct);
         return ToHttpResponse(result);

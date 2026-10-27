@@ -3,8 +3,8 @@ using ADNoirBase.Shared.Application.Interfaces;
 using ADNoirBase.Shared.Infrastructure.Authentication;
 using ADNoirBase.Shared.Infrastructure.Identity;
 using ADNoirBase.Shared.Infrastructure.Persistence.Interceptors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -40,6 +40,8 @@ public static class DependencyInjection
         var jwtSettings = configuration
             .GetSection(JwtSettings.SectionName)
             .Get<JwtSettings>() ?? new JwtSettings();
+
+        JwtSettingsValidator.Validate(jwtSettings);
 
         services.AddAuthentication(options =>
         {

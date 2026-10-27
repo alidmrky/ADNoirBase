@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Users",
 }
 
+// Reads the session token and calls the API on every request.
+export const instant = false
+
 interface UserListDto {
   id: string
   email: string

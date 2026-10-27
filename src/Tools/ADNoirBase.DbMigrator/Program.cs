@@ -1,4 +1,6 @@
 ﻿using ADNoirBase.DbMigrator.Seeders;
+using ADNoirBase.DbMigrator.Services;
+using ADNoirBase.Shared.Application.Interfaces;
 using ADNoirBase.Shared.Infrastructure.Persistence.Interceptors;
 using Identity.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -17,9 +19,7 @@ var host = Host.CreateDefaultBuilder(args)
     {
         services.AddLogging(logging => logging.AddConsole());
 
-        // AuditInterceptor için mock CurrentUserService
-        services.AddScoped<ADNoirBase.Shared.Application.Interfaces.ICurrentUserService,
-            MigratorCurrentUserService>();
+        services.AddScoped<ICurrentUserService, MigratorCurrentUserService>();
         services.AddScoped<AuditInterceptor>();
 
         services.AddDbContext<IdentityDbContext>((sp, options) =>
@@ -55,13 +55,4 @@ catch (Exception ex)
 {
     logger.LogError(ex, "DbMigrator hatası");
     throw;
-}
-
-/// <summary>Migrator için dummy ICurrentUserService — "system" kullanıcısı döner.</summary>
-public sealed class MigratorCurrentUserService : ADNoirBase.Shared.Application.Interfaces.ICurrentUserService
-{
-    public string? UserId => "system";
-    public string? UserName => "system";
-    public IReadOnlyList<string> Roles => [];
-    public bool IsAuthenticated => false;
 }

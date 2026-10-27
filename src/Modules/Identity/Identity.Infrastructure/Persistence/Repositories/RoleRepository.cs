@@ -10,9 +10,18 @@ public sealed class RoleRepository : BasePostgresRepository<Role, Guid>, IRoleRe
     public RoleRepository(IdentityDbContext context, ICurrentUserService currentUserService)
         : base(context, currentUserService) { }
 
-    public async Task<Role?> FindByCodeAsync(string code, CancellationToken ct = default) =>
-        await DbSet.FirstOrDefaultAsync(r => r.Code == code.ToUpperInvariant(), ct);
+    public async Task<Role?> FindByCodeAsync(string code, CancellationToken ct = default)
+    {
+        var normalized = Normalize(code);
+        return await DbSet.FirstOrDefaultAsync(r => r.Code == normalized, ct);
+    }
 
-    public async Task<bool> CodeExistsAsync(string code, CancellationToken ct = default) =>
-        await DbSet.AnyAsync(r => r.Code == code.ToUpperInvariant(), ct);
+    public async Task<bool> CodeExistsAsync(string code, CancellationToken ct = default)
+    {
+        var normalized = Normalize(code);
+        return await DbSet.AnyAsync(r => r.Code == normalized, ct);
+    }
+
+    /// <summary>Rol kodları her zaman büyük harfle saklanır.</summary>
+    private static string Normalize(string code) => code.Trim().ToUpperInvariant();
 }

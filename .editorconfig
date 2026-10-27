@@ -27,6 +27,22 @@ csharp_prefer_braces = true:warning
 csharp_new_line_before_open_brace = all
 dotnet_sort_system_directives_first = true
 
+# Analyzer rules that conflict with this project's deliberate design.
+# CA1000: BaseResponse<T>/PagedList<T> expose static factories by design — the
+#         whole response contract is built on them.
+dotnet_diagnostic.CA1000.severity = none
+# CA1716: "Shared" is the agreed name for the cross-module layer and is not a
+#         keyword in C#; the rule only matters for VB interop.
+dotnet_diagnostic.CA1716.severity = none
+# CA1848: LoggerMessage source generators trade a lot of readability for gains
+#         that only matter on hot paths; opt in per call site if profiling says so.
+dotnet_diagnostic.CA1848.severity = none
+
+# EF Core writes these files; they are not hand-maintained source.
+[**/Persistence/Migrations/*.cs]
+generated_code = true
+dotnet_analyzer_diagnostic.severity = none
+
 [*.{json,yml,yaml}]
 indent_size = 2
 

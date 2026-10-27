@@ -3,10 +3,9 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { z } from "zod"
+import { FormField } from "@/components/auth/form-field"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { apiClient } from "@/lib/api-client"
 
 const registerSchema = z
@@ -62,44 +61,21 @@ export function RegisterForm() {
     }
   }
 
-  const Field = ({
-    id,
-    label,
-    type = "text",
-    placeholder,
-    autoComplete,
-  }: {
-    id: keyof RegisterInput
-    label: string
-    type?: string
-    placeholder?: string
-    autoComplete?: string
-  }) => (
-    <div className="space-y-2">
-      <Label htmlFor={id}>{label}</Label>
-      <Input
-        id={id}
-        name={id}
-        type={type}
-        placeholder={placeholder}
-        autoComplete={autoComplete}
-        disabled={loading}
-      />
-      {errors[id] && <p className="text-sm text-destructive">{errors[id]}</p>}
-    </div>
-  )
+  function field(id: keyof RegisterInput) {
+    return { id, disabled: loading, error: errors[id] }
+  }
 
   return (
     <Card>
       <CardContent className="pt-6">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-3">
-            <Field id="firstName" label="First Name" placeholder="John" />
-            <Field id="lastName" label="Last Name" placeholder="Doe" />
+            <FormField {...field("firstName")} label="First Name" placeholder="John" />
+            <FormField {...field("lastName")} label="Last Name" placeholder="Doe" />
           </div>
-          <Field id="email" label="Email" type="email" placeholder="you@example.com" autoComplete="email" />
-          <Field id="password" label="Password" type="password" placeholder="••••••••" autoComplete="new-password" />
-          <Field id="confirmPassword" label="Confirm Password" type="password" placeholder="••••••••" />
+          <FormField {...field("email")} label="Email" type="email" placeholder="you@example.com" autoComplete="email" />
+          <FormField {...field("password")} label="Password" type="password" placeholder="••••••••" autoComplete="new-password" />
+          <FormField {...field("confirmPassword")} label="Confirm Password" type="password" placeholder="••••••••" autoComplete="new-password" />
 
           {serverError && <p className="text-sm text-destructive">{serverError}</p>}
 

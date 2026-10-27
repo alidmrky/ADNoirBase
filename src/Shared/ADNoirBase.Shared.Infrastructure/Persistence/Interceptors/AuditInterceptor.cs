@@ -38,7 +38,10 @@ public sealed class AuditInterceptor : SaveChangesInterceptor
 
     private void UpdateAuditFields(DbContext? context)
     {
-        if (context is null) return;
+        if (context is null)
+        {
+            return;
+        }
 
         var now = DateTime.UtcNow;
         var userId = _currentUserService.IsAuthenticated

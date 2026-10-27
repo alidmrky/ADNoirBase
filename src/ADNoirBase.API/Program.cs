@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using ADNoirBase.API.Extensions;
 using ADNoirBase.API.Middleware;
 using ADNoirBase.Shared.Infrastructure;
@@ -20,9 +21,14 @@ builder.Services.AddModules(
     typeof(Identity.Application.IdentityApplicationRegistration));
 
 // ─── API ──────────────────────────────────────────────────────────────────────
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    // ResponseStatus ve MessageSeverity sözleşmenin parçası; istemciler sayı
+    // değil isim görmeli, aksi halde enum'a değer eklemek kırıcı olur.
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 builder.Services.AddSwagger();
-builder.Services.AddAppCors(builder.Configuration);
+builder.Services.AddAppCors(builder.Configuration, builder.Environment);
 builder.Services.AddAppHealthChecks(builder.Configuration);
 
 var app = builder.Build();
@@ -35,7 +41,9 @@ app.UseSerilogRequestLogging();
 app.UseCors();
 
 if (app.Environment.IsDevelopment())
+{
     app.UseSwaggerUi();
+}
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -4,8 +4,8 @@ using ADNoirBase.Shared.Contracts.Pagination;
 using ADNoirBase.Shared.Contracts.Responses;
 using Identity.Application.Dtos.User;
 using Identity.Application.Messages;
-using IdentityEntities = Identity.Domain.Entities;
 using Identity.Domain.Interfaces.Repositories;
+using IdentityEntities = Identity.Domain.Entities;
 
 namespace Identity.Application.Services.User;
 
@@ -41,7 +41,9 @@ public sealed class UserManagementService : IUserManagementService
     {
         var user = await _userRepository.FindWithRolesAsync(userId, ct);
         if (user is null)
+        {
             return BaseResponse<UserDto>.NotFound(IdentityMessageCodes.User.NotFound);
+        }
 
         var roles = user.UserRoles.Select(ur => ur.Role.Code).ToList();
         return BaseResponse<UserDto>.Success(
@@ -53,7 +55,9 @@ public sealed class UserManagementService : IUserManagementService
         CreateUserRequest request, CancellationToken ct = default)
     {
         if (await _userRepository.EmailExistsAsync(request.Email, ct))
+        {
             return BaseResponse<UserDto>.Conflict(IdentityMessageCodes.User.EmailConflict);
+        }
 
         var passwordHash = _passwordHasher.Hash(request.Password);
         var user = IdentityEntities.User.Create(request.Email, passwordHash, request.FirstName, request.LastName);
@@ -69,7 +73,9 @@ public sealed class UserManagementService : IUserManagementService
     {
         var user = await _userRepository.FindByIdAsync(userId, ct);
         if (user is null)
+        {
             return BaseResponse.NotFound(IdentityMessageCodes.User.NotFound);
+        }
 
         user.UpdateProfile(request.FirstName, request.LastName);
         await _userRepository.UpdateAsync(user, ct);
@@ -80,7 +86,9 @@ public sealed class UserManagementService : IUserManagementService
     {
         var user = await _userRepository.FindByIdAsync(userId, ct);
         if (user is null)
+        {
             return BaseResponse.NotFound(IdentityMessageCodes.User.NotFound);
+        }
 
         user.Deactivate();
         await _userRepository.UpdateAsync(user, ct);
@@ -91,7 +99,9 @@ public sealed class UserManagementService : IUserManagementService
     {
         var user = await _userRepository.FindByIdAsync(userId, ct);
         if (user is null)
+        {
             return BaseResponse.NotFound(IdentityMessageCodes.User.NotFound);
+        }
 
         user.Activate();
         await _userRepository.UpdateAsync(user, ct);
@@ -103,14 +113,20 @@ public sealed class UserManagementService : IUserManagementService
     {
         var user = await _userRepository.FindWithRolesAsync(userId, ct);
         if (user is null)
+        {
             return BaseResponse.NotFound(IdentityMessageCodes.User.NotFound);
+        }
 
         var role = await _roleRepository.FindByIdAsync(roleId, ct);
         if (role is null)
+        {
             return BaseResponse.NotFound(IdentityMessageCodes.Role.NotFound);
+        }
 
         if (user.UserRoles.Any(ur => ur.RoleId == roleId))
+        {
             return BaseResponse.Conflict(IdentityMessageCodes.Role.AlreadyAssigned);
+        }
 
         var userRole = IdentityEntities.UserRole.Create(userId, roleId);
         user.UserRoles.Add(userRole);
@@ -123,11 +139,15 @@ public sealed class UserManagementService : IUserManagementService
     {
         var user = await _userRepository.FindWithRolesAsync(userId, ct);
         if (user is null)
+        {
             return BaseResponse.NotFound(IdentityMessageCodes.User.NotFound);
+        }
 
         var userRole = user.UserRoles.FirstOrDefault(ur => ur.RoleId == roleId);
         if (userRole is null)
+        {
             return BaseResponse.Conflict(IdentityMessageCodes.Role.NotAssigned);
+        }
 
         user.UserRoles.Remove(userRole);
         await _userRepository.UpdateAsync(user, ct);

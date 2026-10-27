@@ -21,7 +21,9 @@ public sealed class RefreshTokenRepository : BasePostgresRepository<RefreshToken
             .ToListAsync(ct);
 
         foreach (var token in tokens)
+        {
             token.Revoke();
+        }
 
         await Context.SaveChangesAsync(ct);
     }

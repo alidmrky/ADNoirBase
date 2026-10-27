@@ -24,7 +24,9 @@ public static class ModuleExtensions
                 .Cast<IModuleRegistration>();
 
             foreach (var registration in registrations)
+            {
                 registration.Register(services, configuration);
+            }
         }
 
         return services;

@@ -17,6 +17,9 @@ interface UserDto {
   roles: string[]
 }
 
+// Reads the session token and calls the API on every request.
+export const instant = false
+
 export async function generateMetadata({
   params,
 }: {
