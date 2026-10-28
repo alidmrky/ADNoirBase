@@ -1,7 +1,9 @@
 import type { Metadata } from "next"
-import { notFound } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
+import Link from "next/link"
 import { auth } from "@/lib/auth"
-import { apiClient } from "@/lib/api-client"
+import { apiClient, ApiError } from "@/lib/api-client"
+import { UserRoleEditor } from "@/components/roles/user-role-editor"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
@@ -37,8 +39,9 @@ async function getUser(token: string, id: string) {
       cache: "no-store",
     })
     return result.data
-  } catch {
-    return null
+  } catch (error) {
+    if (error instanceof ApiError && error.status === 404) return null
+    throw error
   }
 }
 
@@ -49,7 +52,11 @@ export default async function UserDetailPage({
 }) {
   const { id } = await params
   const session = await auth()
-  const user = await getUser(session?.accessToken ?? "", id)
+  if (!session) redirect("/login")
+  if (!session.user.roles.includes("ADMIN")) redirect("/dashboard")
+  let user: UserDto | null
+  try { user = await getUser(session.accessToken, id) }
+  catch (error) { return <div role="alert" className="space-y-3"><p>{error instanceof Error ? error.message : "Kullanıcı yüklenemedi."}</p><Link href="/login" className="underline">Yeniden giriş yap</Link></div> }
 
   if (!user) notFound()
 
@@ -60,6 +67,8 @@ export default async function UserDetailPage({
         <p className="text-muted-foreground">{user.email}</p>
       </div>
 
+      <Link href="/users" className="text-sm underline">Kullanıcılara dön</Link>
+      <UserRoleEditor token={session.accessToken} userId={user.id} currentUserId={session.user.id} />
       <div className="grid gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>

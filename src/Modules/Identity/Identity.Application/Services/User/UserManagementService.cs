@@ -3,6 +3,7 @@ using ADNoirBase.Shared.Application.Interfaces;
 using ADNoirBase.Shared.Contracts.Pagination;
 using ADNoirBase.Shared.Contracts.Responses;
 using Identity.Application.Dtos.User;
+using Identity.Application.Dtos.Role;
 using Identity.Application.Messages;
 using Identity.Domain.Interfaces.Repositories;
 using IdentityEntities = Identity.Domain.Entities;
@@ -14,15 +15,21 @@ public sealed class UserManagementService : IUserManagementService
     private readonly IUserRepository _userRepository;
     private readonly IRoleRepository _roleRepository;
     private readonly IPasswordHasher _passwordHasher;
+    private readonly IUserRoleRepository _userRoleRepository;
+    private readonly ICurrentUserService _currentUser;
 
     public UserManagementService(
         IUserRepository userRepository,
         IRoleRepository roleRepository,
-        IPasswordHasher passwordHasher)
+        IPasswordHasher passwordHasher,
+        IUserRoleRepository userRoleRepository,
+        ICurrentUserService currentUser)
     {
         _userRepository = userRepository;
         _roleRepository = roleRepository;
         _passwordHasher = passwordHasher;
+        _userRoleRepository = userRoleRepository;
+        _currentUser = currentUser;
     }
 
     public async Task<BaseResponse<PagedList<UserListDto>>> GetUsersAsync(
@@ -124,15 +131,26 @@ public sealed class UserManagementService : IUserManagementService
             return BaseResponse.NotFound(IdentityMessageCodes.Role.NotFound);
         }
 
-        if (user.UserRoles.Any(ur => ur.RoleId == roleId))
+        var userRole = IdentityEntities.UserRole.Create(userId, roleId);
+        if (!await _userRoleRepository.TryAssignAsync(userRole, ct))
         {
             return BaseResponse.Conflict(IdentityMessageCodes.Role.AlreadyAssigned);
         }
 
-        var userRole = IdentityEntities.UserRole.Create(userId, roleId);
-        user.UserRoles.Add(userRole);
-        await _userRepository.UpdateAsync(user, ct);
         return BaseResponse.Success(IdentityMessageCodes.Role.Assigned);
+    }
+
+    public async Task<BaseResponse<IReadOnlyList<RoleDto>>> GetRolesAsync(Guid userId, CancellationToken ct = default)
+    {
+        var user = await _userRepository.FindWithRolesAsync(userId, ct);
+        if (user is null)
+        {
+            return BaseResponse<IReadOnlyList<RoleDto>>.NotFound(IdentityMessageCodes.User.NotFound);
+        }
+        var counts = await _userRoleRepository.CountByRoleAsync(user.UserRoles.Select(x => x.RoleId).ToList(), ct);
+        var roles = user.UserRoles.Select(x => x.Role).OrderBy(role => role.Code)
+            .Select(role => new RoleDto(role.Id, role.Name, role.Code, role.Description, role.IsSystem, counts.GetValueOrDefault(role.Id))).ToList();
+        return BaseResponse<IReadOnlyList<RoleDto>>.Success(roles);
     }
 
     public async Task<BaseResponse> RemoveRoleAsync(
@@ -144,14 +162,22 @@ public sealed class UserManagementService : IUserManagementService
             return BaseResponse.NotFound(IdentityMessageCodes.User.NotFound);
         }
 
-        var userRole = user.UserRoles.FirstOrDefault(ur => ur.RoleId == roleId);
-        if (userRole is null)
+        var role = await _roleRepository.FindByIdAsync(roleId, ct);
+        if (role is null)
+        {
+            return BaseResponse.NotFound(IdentityMessageCodes.Role.NotFound);
+        }
+
+        if (role.Code == "ADMIN" && Guid.TryParse(_currentUser.UserId, out var currentId) && currentId == userId)
+        {
+            return BaseResponse.BusinessRuleViolation(IdentityMessageCodes.Role.CannotRemoveOwnAdmin);
+        }
+
+        if (!await _userRoleRepository.RemoveAsync(userId, roleId, ct))
         {
             return BaseResponse.Conflict(IdentityMessageCodes.Role.NotAssigned);
         }
 
-        user.UserRoles.Remove(userRole);
-        await _userRepository.UpdateAsync(user, ct);
         return BaseResponse.Success(IdentityMessageCodes.Role.Removed);
     }
 }

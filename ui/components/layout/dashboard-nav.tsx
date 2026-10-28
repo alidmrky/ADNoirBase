@@ -17,6 +17,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/users", label: "Users", adminOnly: true },
+  { href: "/roles", label: "Roller", adminOnly: true },
   { href: "/notification-admin", label: "Bildirim yönetimi", adminOnly: true },
   { href: "/notification-preferences", label: "Bildirim tercihleri" },
 ]

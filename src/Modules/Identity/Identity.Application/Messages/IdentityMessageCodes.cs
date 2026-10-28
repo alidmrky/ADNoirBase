@@ -30,6 +30,12 @@ public static class IdentityMessageCodes
 
     public static class Role
     {
+        public const string Created               = "identity.role.created";
+        public const string Updated               = "identity.role.updated";
+        public const string Deleted               = "identity.role.deleted";
+        public const string Invalid               = "identity.role.invalid";
+        public const string InUse                 = "identity.role.in_use";
+        public const string CannotRemoveOwnAdmin  = "identity.role.cannot_remove_own_admin";
         public const string NotFound              = "identity.role.not_found";
         public const string CodeConflict          = "identity.role.code_conflict";
         public const string SystemRoleImmutable   = "identity.role.system_immutable";

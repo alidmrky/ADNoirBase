@@ -76,6 +76,8 @@ async function request<T>(
     body: body !== undefined ? JSON.stringify(body) : undefined,
   })
 
+  if (response.status === 401) throw new Error("Oturum süresi doldu. Lütfen tekrar giriş yapın.")
+  if (response.status === 403) throw new Error("Bu işlem için yetkiniz yok.")
   const data: BaseResponseWithData<T> = await response.json()
 
   if (!data.isSuccess) {

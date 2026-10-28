@@ -1,4 +1,6 @@
 import type { Metadata } from "next"
+import Link from "next/link"
+import { redirect } from "next/navigation"
 import { auth } from "@/lib/auth"
 import { apiClient } from "@/lib/api-client"
 import type { PagedList } from "@/lib/api-client"
@@ -31,9 +33,14 @@ async function getUsers(token: string, page = 1, pageSize = 20) {
   }
 }
 
-export default async function UsersPage() {
+export default async function UsersPage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
+  const params = await searchParams
+  const requestedPage = Number(params.page ?? "1")
+  const page = Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1
   const session = await auth()
-  const users = await getUsers(session?.accessToken ?? "", 1, 20)
+  if (!session) redirect("/login")
+  if (!session.user.roles.includes("ADMIN")) redirect("/dashboard")
+  const users = await getUsers(session.accessToken, page, 20)
 
   return (
     <div className="space-y-6">
@@ -55,7 +62,7 @@ export default async function UsersPage() {
           <tbody>
             {users?.items.map((user) => (
               <tr key={user.id} className="border-b hover:bg-muted/30 transition-colors">
-                <td className="px-4 py-3 font-medium">{user.fullName}</td>
+                <td className="px-4 py-3 font-medium"><Link href={`/users/${user.id}`} className="underline underline-offset-4">{user.fullName}</Link></td>
                 <td className="px-4 py-3 text-muted-foreground">{user.email}</td>
                 <td className="px-4 py-3">
                   <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
@@ -83,9 +90,15 @@ export default async function UsersPage() {
       </div>
 
       {users && (
-        <p className="text-sm text-muted-foreground">
+        <div className="flex items-center justify-between gap-4 text-sm text-muted-foreground">
+        <p>
           Showing {users.items.length} of {users.totalCount} users
         </p>
+        <div className="flex gap-4">
+          {users.hasPreviousPage && <Link href={`/users?page=${page - 1}`} className="underline">Önceki</Link>}
+          {users.hasNextPage && <Link href={`/users?page=${page + 1}`} className="underline">Sonraki</Link>}
+        </div>
+        </div>
       )}
     </div>
   )

@@ -67,6 +67,10 @@ public sealed class UserManagementController : BaseApiController
         return ToHttpResponse(result);
     }
 
+    [HttpGet("{userId:guid}/roles")]
+    public async Task<IActionResult> GetRoles(Guid userId, CancellationToken ct) =>
+        ToHttpResponse(await _userManagementService.GetRolesAsync(userId, ct));
+
     [HttpDelete("{userId:guid}/roles/{roleId:guid}")]
     public async Task<IActionResult> RemoveRole(Guid userId, Guid roleId, CancellationToken ct)
     {
