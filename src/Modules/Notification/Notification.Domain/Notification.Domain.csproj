@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\ADNoirBase.Shared.Domain\ADNoirBase.Shared.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

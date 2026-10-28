@@ -1,0 +1,90 @@
+services:
+
+  mailpit:
+    image: axllent/mailpit:v1.31.6
+    profiles: [tools]
+    ports:
+      - "127.0.0.1:1025:1025"
+      - "127.0.0.1:8025:8025"
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: adnoirbase_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?set POSTGRES_DB in .env}
+      POSTGRES_USER: ${POSTGRES_USER:?set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongodb:
+    image: mongo:7
+    container_name: adnoirbase_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  migrator:
+    build:
+      context: .
+      dockerfile: src/Tools/ADNoirBase.DbMigrator/Dockerfile.migrator
+    container_name: adnoirbase_migrator
+    environment:
+      ConnectionStrings__PostgreSQL: "Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}"
+      ADMIN_EMAIL: ${ADMIN_EMAIL:?set ADMIN_EMAIL in .env}
+      ConnectionStrings__MongoDB: "mongodb://mongodb:27017"
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?set ADMIN_PASSWORD in .env}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: adnoirbase_api
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__PostgreSQL: "Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}"
+      ConnectionStrings__MongoDB: "mongodb://mongodb:27017"
+      Jwt__SecretKey: ${Jwt__SecretKey:?set Jwt__SecretKey in .env}
+      Jwt__Issuer: ${Jwt__Issuer:-ADNoirBase}
+      Jwt__Audience: ${Jwt__Audience:-ADNoirBase}
+      Cors__AllowedOrigins__0: ${Cors__AllowedOrigins__0:-http://localhost:3000}
+      Notification__AppUrl: ${Notification__AppUrl:-http://localhost:3000}
+      Notification__UnsubscribeSecret: ${Notification__UnsubscribeSecret:-}
+      Notification__Email__Provider: ${Notification__Email__Provider:-Log}
+      Notification__Email__FromAddress: ${Notification__Email__FromAddress:-no-reply@localhost}
+      Notification__Email__FromDisplayName: ${Notification__Email__FromDisplayName:-ADNoirBase}
+      Notification__Email__Smtp__Host: ${DOCKER_SMTP_HOST:-mailpit}
+      Notification__Email__Smtp__Port: ${Notification__Email__Smtp__Port:-1025}
+      Notification__Email__Smtp__Security: ${Notification__Email__Smtp__Security:-None}
+      Notification__Email__Smtp__UserName: ${Notification__Email__Smtp__UserName:-}
+      Notification__Email__Smtp__Password: ${Notification__Email__Smtp__Password:-}
+      Notification__Sms__Provider: ${Notification__Sms__Provider:-Log}
+    depends_on:
+      migrator:
+        condition: service_completed_successfully
+      mongodb:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  mongo_data:

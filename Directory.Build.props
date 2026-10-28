@@ -1,0 +1,31 @@
+<Project>
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <!-- Pinned on purpose. "latest-recommended" follows whatever analyzer set
+         the installed SDK ships, so a newer SDK can add a rule and break the
+         build for everyone else. Bump this deliberately, not by accident. -->
+    <AnalysisLevel>9.0-recommended</AnalysisLevel>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Product>ADNoirBase</Product>
+    <Authors>ADNoirBase Contributors</Authors>
+    <RepositoryUrl>https://github.com/alidmrky/ADNoirBase</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+
+  <!-- Deterministic, reproducible CI builds. -->
+  <PropertyGroup Condition="'$(ContinuousIntegrationBuild)' == '' AND '$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+</Project>

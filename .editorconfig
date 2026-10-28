@@ -1,0 +1,58 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = crlf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{cs,csx}]
+# Naming conventions
+dotnet_naming_rule.private_fields_should_be_camel_case.symbols = private_fields
+dotnet_naming_rule.private_fields_should_be_camel_case.style = camel_case_style
+dotnet_naming_rule.private_fields_should_be_camel_case.severity = suggestion
+
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+
+dotnet_naming_style.camel_case_style.capitalization = camel_case
+dotnet_naming_style.camel_case_style.required_prefix = _
+
+# Code style
+csharp_style_var_for_built_in_types = false:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_prefer_braces = true:warning
+csharp_new_line_before_open_brace = all
+dotnet_sort_system_directives_first = true
+
+# Analyzer rules that conflict with this project's deliberate design.
+# CA1000: BaseResponse<T>/PagedList<T> expose static factories by design — the
+#         whole response contract is built on them.
+dotnet_diagnostic.CA1000.severity = none
+# CA1716: "Shared" is the agreed name for the cross-module layer and is not a
+#         keyword in C#; the rule only matters for VB interop.
+dotnet_diagnostic.CA1716.severity = none
+# CA1848 / CA1873: both push logging call sites toward LoggerMessage delegates
+#         and IsEnabled guards. Those trade a lot of readability for gains that
+#         only matter on hot paths, and this project's log calls sit in startup
+#         and seeding code. Opt in per call site if profiling says otherwise.
+dotnet_diagnostic.CA1848.severity = none
+dotnet_diagnostic.CA1873.severity = none
+# CA1711: the rule reserves the "EventHandler" suffix for delegates matching
+#         System.EventHandler. IIntegrationEventHandler<T> is an interface with
+#         an async method, and "handler" is the established name for this role
+#         in modular monoliths — renaming it would cost more than it buys.
+dotnet_diagnostic.CA1711.severity = none
+
+# EF Core writes these files; they are not hand-maintained source.
+[**/Persistence/Migrations/*.cs]
+generated_code = true
+dotnet_analyzer_diagnostic.severity = none
+
+[*.{json,yml,yaml}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false

@@ -1,0 +1,26 @@
+---
+description: ADNoirBase genel proje kuralları — her zaman geçerli
+globs: ["**/*.cs"]
+alwaysApply: true
+---
+
+# ADNoirBase — Genel Kurallar
+
+## Mimari
+- Modular Monolith + Clean Architecture
+- Katmanlar: Shared.Contracts → Shared.Domain → Shared.Application → Shared.Infrastructure → [Mod].Domain → [Mod].Application → [Mod].Infrastructure → API
+- Modüller birbirinin projesine **doğrudan referans veremez**
+
+## Teknoloji
+- .NET 9, C# 13
+- PostgreSQL (EF Core 9) + MongoDB (resmi driver)
+- JWT Bearer Token auth
+- FluentValidation
+- Serilog
+
+## Dil & İsimlendirme
+- Tüm kod ve yorum İngilizce yazılır
+- `PascalCase`: class, interface, property, method, enum
+- `camelCase` + `_` prefix: private field (`_userRepository`)
+- Interface: `I` prefix (`IUserRepository`)
+- Async metodlar `Async` suffix alır

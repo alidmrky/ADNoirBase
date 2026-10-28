@@ -1,0 +1,27 @@
+---
+description: Shared.Domain katman kuralları
+globs: ["src/Shared/ADNoirBase.Shared.Domain/**/*.cs"]
+---
+
+# Shared.Domain Kuralları
+
+## ✅ İzin verilenler
+- Abstract entity sınıfları
+- Interface tanımları (IRepository)
+- ValueObject, DomainException
+
+## ❌ Yasak
+- Dış NuGet paketi (EF Core, MongoDB, FluentValidation dahil)
+- Concrete implementasyon
+- Infrastructure detayı
+
+## Entity Hiyerarşisi
+`BaseEntity<TId>` → `AuditableEntity<TId>` → `FullAuditableEntity<TId>` → `SoftDeletableEntity<TId>`
+
+## SoftDelete Kuralı
+- `SoftDelete()` yalnızca entity üzerinde çağrılır
+- Repository doğrudan `IsDeleted = true` **set edemez**
+
+## IRepository
+- Tek arayüz — hem PG hem Mongo implementasyonu bunu kullanır
+- Tüm metodlar `CancellationToken ct = default` alır

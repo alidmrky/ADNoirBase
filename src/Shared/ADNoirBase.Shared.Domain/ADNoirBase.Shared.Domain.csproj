@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\ADNoirBase.Shared.Contracts\ADNoirBase.Shared.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

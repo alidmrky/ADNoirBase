@@ -1,0 +1,6 @@
+@ADNoirBase.API_HostAddress = http://localhost:5197
+
+GET {{ADNoirBase.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

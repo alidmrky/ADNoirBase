@@ -1,0 +1,25 @@
+---
+description: Modül Infrastructure katman kuralları
+globs: ["src/Modules/**/*.Infrastructure/**/*.cs"]
+---
+
+# Modül Infrastructure Kuralları
+
+## Bağımlılık
+`[Mod].Application` + `Shared.Infrastructure` — başka modüle referans yasak
+
+## Repository implementasyonu
+- PostgreSQL: `PostgresRepository<[Mod]DbContext, TEntity, TId>` extend et
+- MongoDB: `MongoRepository<TEntity, TId>` extend et; Id'yi factory metodunda ata (Mongo Id üretmez)
+- Her entity için ayrı repository class
+- Soft delete: `entity.SoftDelete(deletedBy)` çağrısı — `IsDeleted = true` set etme
+
+## EF Core
+- Her entity için ayrı `IEntityTypeConfiguration<T>` dosyası
+- Global query filter: `HasQueryFilter(x => !x.IsDeleted)` tüm `SoftDeletableEntity`'lerde
+- Schema: her modülün kendi schema'sı (`identity`, `order`, vb.)
+- `AuditInterceptor` her DbContext'e eklenmeli
+
+## Migrations
+- `Migrations/` klasörü commit edilir
+- Her modülün kendi migrations history tablosu: `__[Mod]Migrations`

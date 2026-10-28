@@ -1,0 +1,26 @@
+---
+description: API katman kuralları
+globs: ["src/ADNoirBase.API/**/*.cs"]
+---
+
+# API Katman Kuralları
+
+## Controller kuralları
+- Tüm controller'lar `BaseApiController`'dan miras alır
+- Controller yalnızca Application Service çağırır — iş mantığı **yasak**
+- `ToHttpResponse(result)` kullanarak dön
+- Validator inject et, manuel validate et, sonra servisi çağır
+
+## Middleware sırası (Program.cs)
+1. `ExceptionHandlingMiddleware`
+2. `CorrelationIdMiddleware`
+3. `UseSerilogRequestLogging()`
+4. `UseCors()`
+5. `UseAuthentication()`
+6. `UseAuthorization()`
+7. `MapControllers()`
+
+## Yeni modül ekleme
+- `AddModules()` çağrısına modülün marker type'ını ekle
+- `AddIdentityInfrastructure()` benzeri bir extension yaz
+- Controller'ları `Controllers/[ModuleName]/` altına koy
