@@ -36,11 +36,11 @@
     <PackageVersion Include="MailKit" Version="4.18.2" />
     <PackageVersion Include="Scriban" Version="7.5.3" />
     <!-- Serilog 10.x drags .NET 10 abstractions into a net9.0 build; stay on the 9.x line. -->
-    <PackageVersion Include="Serilog.AspNetCore" Version="9.0.0" />
+    <PackageVersion Include="Serilog.AspNetCore" Version="10.0.0" />
     <PackageVersion Include="Serilog.Enrichers.CorrelationId" Version="3.0.1" />
     <PackageVersion Include="Serilog.Enrichers.Environment" Version="3.0.1" />
-    <PackageVersion Include="Serilog.Sinks.Console" Version="6.0.0" />
-    <PackageVersion Include="Serilog.Sinks.File" Version="6.0.0" />
+    <PackageVersion Include="Serilog.Sinks.Console" Version="6.1.1" />
+    <PackageVersion Include="Serilog.Sinks.File" Version="7.0.0" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="7.3.2" />
   </ItemGroup>
 
